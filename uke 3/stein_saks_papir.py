@@ -13,7 +13,18 @@ def cast():
 def check(pone,ptwo):
     if pone == ptwo:
         status = "Draw"
-    #else pone != ptwo:
+        print status
+    elif (pone != ptwo):
+        print "%r vs %r" % (pone, ptwo)
+        if "stein" in pone and "saks" in ptwo:
+            status = "player 1 wins"
+            print status
+
+            
+        
+        
+        
+        
         
     
         
