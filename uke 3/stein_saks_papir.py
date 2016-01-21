@@ -3,14 +3,14 @@ print "P1: Velg stein 'a', Saks 'b'' eller Papir'c'"
 a = "stein"
 b = "saks"
 c = "papir"
-pone = input(">>")
-    if pone!= pwto==(a, b, c)
-    print "Error"
+pone = input("a, b, eller c \n >>")
+    #if pone!= [a, b, c]
+    #print "Error"
 
 print "P2: Velg stein 'a', Saks 'b'' eller Papir'c'"
-ptwo = input(">>")
-    if ptwo!= pwto==("a","b","c")
-    print "Error"
+ptwo = input("a, b eller c \n >>")
+    #if ptwo!= [ a, b, c]
+    #print "Error"
     
 status = "' '"
 
@@ -30,14 +30,10 @@ def check(pone,ptwo):
             status = "player 2 wins"
             print status
         elif "saks" in pone and "papir" in ptwo:
+            status = "player 1 wins"
+            print status
+        elif "papir" in pone and "saks" in ptwo:
+            status = "player 1 wins"
+            print status
             
-
-            
-        
-        
-        
-        
-        
-    
-        
-    
+cast()
