@@ -1,5 +1,20 @@
 import string
 import random
+print "Velg STEIN, SAKS eller PAPIR"
 
-choices = ["STEIN", "SAKS", "PAPIR"]
-print(choices[random.randint(0,2)])
+pone = raw_input(' ')
+ptwo = raw_input(' ')
+status = "' '"
+
+def cast():
+    print "Player 1 brukte %s, Player 2 brukte %s" % (pone, ptwo)
+    check(pone, ptwo)
+
+def check(pone,ptwo):
+    if pone == ptwo:
+        status = "Draw"
+    #else pone != ptwo:
+        
+    
+        
+    
