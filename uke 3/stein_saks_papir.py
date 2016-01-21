@@ -1,8 +1,12 @@
 import string
 import random
-print "Velg STEIN, SAKS eller PAPIR"
+print "Velg stein 'a', Saks 'b'' eller Papir'c'"
 
-pone = raw_input(' ')
+a = "stein"
+b = "saks"
+c = "papir"
+
+pone = raw_input
 ptwo = raw_input(' ')
 status = "' '"
 
@@ -18,6 +22,8 @@ def check(pone,ptwo):
         print "%r vs %r" % (pone, ptwo)
         if "stein" in pone and "saks" in ptwo:
             status = "player 1 wins"
+        elif "stein" in pone and "papir" in ptwo:
+            status = "player 2 wins"
             print status
 
             
