@@ -4,13 +4,9 @@ a = "stein"
 b = "saks"
 c = "papir"
 pone = input("a, b, eller c \n >>")
-    #if pone!= [a, b, c]
-    #print "Error"
 
 print "P2: Velg stein 'a', Saks 'b'' eller Papir'c'"
 ptwo = input("a, b eller c \n >>")
-    #if ptwo!= [ a, b, c]
-    #print "Error"
     
 status = "' '"
 
