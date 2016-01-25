@@ -5,19 +5,22 @@ class TestAdd(unittest.TestCase):
     def setUp(self):
         pass
     def test_numbers_100_7(self):
-        self.assertEqual(add(100,27),127)
+        self.assertEqual(add(27,20),47)
 
-Class TestAdd(unittest.TestCase):
+class TestSub(unittest.TestCase):
     def setUp(self):
         pass
-    def test_numbers_100_7(self):
-        self.assertEqual(sub(54,23),31)
+    def test_numbers_200_80(self):
+        self.assertEqual(sub(200, 80),120)
 
-Class TestMult(unittest.TestCase):
+class TestMult(unittest.TestCase):
     def setUp(self):
         pass
-    def test_numbers_100_7(self):
-        self.assertEqual(mult(10,14),144)
+    def test_number_25_4(self):
+        self.assertEqual(mult(30,4),120)
         
-Class testDiv(unittest.TestCase):
-    
+class TestDiv(unittest.TestCase):
+    def setUp(self):
+        pass
+    def test_numbers_120_5(self):
+        self.assertEqual(div(100,5),20)
