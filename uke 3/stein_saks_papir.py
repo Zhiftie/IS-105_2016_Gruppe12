@@ -33,7 +33,14 @@ def check(pone,ptwo):
             status = "player 1 wins"
             print status
         elif "papir" in pone and "saks" in ptwo:
-            status = "player 1 wins"
+            status = "player 2 wins"
             print status
+        elif "saks" in pone and "stein" in ptwo:
+            status = "Player 2 Wins"
+            print status
+        elif "papir" in pone and "stein" in ptwo:
+            status = "Player 1 Wins"
+            print status
+            
             
 cast()
