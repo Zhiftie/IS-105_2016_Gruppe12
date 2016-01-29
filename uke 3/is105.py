@@ -14,4 +14,7 @@ def mult(x,y):#Lene
 def div(x,y):#Sindre
     return x / y
 
+def modulo(x,y):#Guro
+    return x % y
+    
 # legg inn flere funksjoner og sett på navn
