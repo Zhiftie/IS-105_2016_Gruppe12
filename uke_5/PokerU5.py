@@ -59,12 +59,15 @@ class Deck:
     
 
 class Hand:
-    if ( len(deck) <5):
-        print ("Ooops! Not enough cards in the deck!")
-        return None
-    self._cards = []
-    for i in range(5):
-        card = deck.deal()
+
+    def __init__(self, deck):
+        if ( len(deck) <5):
+            print ("Ooops! Not enough cards in the deck!")
+            return None
+        self._cards = []
+        for i in range(5):
+            card = deck.deal()
+            self._cards.append(card)
         self._myranks = [0] * 14
         self._mysuits = [0] * 4
         self.makeHand()
@@ -304,7 +307,8 @@ class Hand:
             return 2
         elif self.hasPairofTwo():
             return 1
-        else return 0
+        else:
+            return 0
         
        
         
