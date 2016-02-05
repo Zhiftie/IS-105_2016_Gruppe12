@@ -85,9 +85,14 @@ def main():
         players.append(hand)
         
     for player in range(numOfPlayers):
+        counter = 0
         for i in range(spillerInput):
             card = players[player][i]
-            print "Spiller" + str((player+1)) + ": " + card.getRank() + " " + card.getColour() + " " + card.getSuite()
+            print "Spiller" + str((player+1)) + ": " + card.getRank() + " " + card.getColour() + " " + card.getSuite() + "\n"
+            counter +=1
+            if counter == 5:
+                print "\n"
+                counter = 0 # resett counter after running the game, preparing it for next game.
         
   
 
