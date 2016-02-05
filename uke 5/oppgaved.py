@@ -29,17 +29,21 @@ def decode(lres): #Sjekker første index i lres. Ut fra resultatet
     it = 0        #sjekker den neste index og genererer en nøkkel i dict 
     ferdigM = ""
     for bit in lres:
-        if lres[0] is ("1") and lres[1] is ("1"):# index 0 = 1 og index 1 = 0
+        if len(lres) is 0:
+            return ferdigM
+        elif lres[0] is ("1") and lres[1] is ("1"):# index 0 = 1 og index 1 = 0
             key = lres[0] + lres[1]
             del lres[0] 
             del lres[0]
             ferdigM += mappingB2A[key]
-        if lres[0] is ("1") and lres[1] is ("0"): 
+        elif lres[0] is ("1") and lres[1] is ("0"): 
             key = lres[0] + lres[1]
             del lres[0]
             del lres[0]
             ferdigM += mappingB2A[key]
-        if lres[0] is "0": 
+        else:
+            break
+        elif lres[0] is "0": 
             if lres[1] is "0": 
                 if lres[2] is "1": 
                     key = lres[0] + lres[1] + lres[2]
@@ -53,7 +57,9 @@ def decode(lres): #Sjekker første index i lres. Ut fra resultatet
                     del lres[0]
                     del lres[0]
                     ferdigM += mappingB2A[key]
-            if lres[1] is "1":# Får feilmelding her når indexen er tom 
+                else:
+                    break
+            elif lres[1] is "1":# Får feilmelding her når listen er tom 
                 if lres[2] is "1":
                     key = lres[0] + lres[1] + lres[2]
                     del lres[0]
@@ -61,16 +67,19 @@ def decode(lres): #Sjekker første index i lres. Ut fra resultatet
                     del lres[0]
                     it +=1
                     ferdigM +=mappingB2A[key]
-                if lres[2] is "0":
+                elif lres[2] is "0":
                     key = lres[0] + lres[1] + lres[2]
                     del lres[0]
                     del lres[0]
                     del lres[0]
                     it +=1
-                    ferdigM +=mappingB2A[key]            
-        else:
-            
-            return ferdigM
+                    ferdigM +=mappingB2A[key]
+                else:
+                    break
+    
+    print ferdigM       
+    return ferdigM
+    
                 
 melding = decode(lres)
 
