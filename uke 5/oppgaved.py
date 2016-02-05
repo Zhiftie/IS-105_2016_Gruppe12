@@ -2,25 +2,29 @@ mappingA2B = {"F" : "11", "D": "10", "A": "011", "B" : "010", "E" : "001", "C":"
 mappingB2A = {"11" : "F", "10" : "D", "011" : "A", "010" : "B" , "001" : "C"}
 
 m = "FDABEC" #1110011010001000
-n1 = 2 # Chunk lengde for decoding
-n2 = 3 #  
+n = 2   
+lres = []
 res = ""
-lres = list()
 def encode(m):
-    it = 0
-    res = ""
-    while it <= len(m):
-        for letter in m:
-            if letter in m:
-                res = res + mappingA2B[letter]
-                it += 1
-    print "Original String: %r , Kodet String: %r" % (m,res)
-    return res
+    eString = ""
+    for letter in m:
+        if letter in m: 
+            eString = eString + mappingA2B[letter]    
+    return eString
 
-def chunks(res, n1):
-    [lres[i:i+n1] for c in range(0,len(res),n1)] 
-    return lres 
+res = encode(m)
 
+def chunks2(res, n):
+    for i in range(0,len(res),n):
+        yield lres[i:i+n]
+    
+#lres = chunks2(res, n)
+
+def chunks(res, n):
+    [res[i:i+n] for i in range(0,len(res),n)] 
+    print res
+
+lres = chunks(res, n)
 
 def decode(res):
     it = 0
@@ -28,13 +32,15 @@ def decode(res):
     while it <= len(res):
         pass
 
-def print_lres(lres):
+def printlres():
     for item in lres:
         print str(item)
 
 encode(m)
-chunks(res, n1)        
-print_lres(lres)
+chunks(res, n)
+printlres()
+
+
 
 
         
