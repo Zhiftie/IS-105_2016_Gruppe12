@@ -1,3 +1,4 @@
+
 def code():
     """
     LZW
@@ -47,7 +48,7 @@ def code():
     table[41] = ')'
     table[42] = '*'
     table[43] = '+'
-    #table[44] = '´'
+    table[44] = ','
     table[45] = '-'
     table[46] = '.'
     table[47] = '/'
