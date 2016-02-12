@@ -50,7 +50,7 @@ class Kortstokk:
 
 
 def makeKortStokk():
-    cards = []
+    cards = [] 
     for suite in ['spar', 'hjerter', 'ruter', 'kløver']:
         for rank in ['ess', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'knekt', 'dame', 'konge']:
             colour = ''
@@ -61,6 +61,20 @@ def makeKortStokk():
                 
             cards.append(Kort(rank, suite, colour))
     return Kortstokk(cards)
+
+"""
+Her ville mulige hender blitt definert.
+f.eks. 9 if suite.hand = 5. 
+8 if straight and flush.
+"""
+
+"""
+For å lage en liste med rangerende verdi på kortene måtte vi gjort det her, ved f.eks:
+ranks = [ 14 if r == 'A' else
+13 if r == 'K' else
+
+]
+"""
             
 def main():
     kortstokk = makeKortStokk()
