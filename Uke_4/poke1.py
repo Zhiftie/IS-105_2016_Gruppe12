@@ -50,7 +50,7 @@ class Kortstokk:
 
 
 def makeKortStokk():
-    cards = []
+    cards = [] 
     for suite in ['spar', 'hjerter', 'ruter', 'kløver']:
         for rank in ['ess', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'knekt', 'dame', 'konge']:
             colour = ''
@@ -61,6 +61,20 @@ def makeKortStokk():
                 
             cards.append(Kort(rank, suite, colour))
     return Kortstokk(cards)
+
+"""
+Her ville mulige hender blitt definert.
+f.eks. 9 if suite.hand = 5. 
+8 if straight and flush.
+"""
+
+"""
+For å lage en liste med rangerende verdi på kortene måtte vi gjort det her, ved f.eks:
+ranks = [ 14 if r == 'A' else
+13 if r == 'K' else
+
+]
+"""
             
 def main():
     kortstokk = makeKortStokk()
@@ -68,13 +82,8 @@ def main():
     
     players = []
     
-    numOfPlayers = -1
-    while numOfPlayers < 1 or numOfPlayers > 7:
-        numOfPlayers = int(input('Antall Spillere: '))
-        
-    spillerInput = -1
-    while spillerInput < 1 or spillerInput > 7:
-        spillerInput = int(input('Sett inn antall kort: 1-7: '))
+    numOfPlayers = 5 #Antall spillere
+    spillerInput = 5 #Antall kort
         
     for player in range(numOfPlayers):
         hand = []
@@ -85,15 +94,16 @@ def main():
         players.append(hand)
         
     for player in range(numOfPlayers):
-        counter = 0
+        counter = 0 
         for i in range(spillerInput):
             card = players[player][i]
             print "Spiller" + str((player+1)) + ": " + card.getRank() + " " + card.getColour() + " " + card.getSuite() + "\n"
             counter +=1
             if counter == 5:
-                print "\n"
+                print "\n" #Counts 5 lines then make a white line to seperate the players. 
                 counter = 0 # resett counter after running the game, preparing it for next game.
         
   
 
 main()
+
