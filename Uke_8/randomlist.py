@@ -1,6 +1,5 @@
-import scipy as sp
 from random import shuffle
-import numpy as np
+
 ln = 10000 # lenght of list used in longLnShiffle function
 haystack = []
 var1 = 2
@@ -23,7 +22,7 @@ def findNeedle(needle):
         return i
     
 def search_fast(haystack, needle):
-    for item in haustack:
+    for item in haystack:
         if item == needle:
             return True
     return False
@@ -39,3 +38,18 @@ haystack = shufflelist()
 needleI = findNeedle(needle)
 
 print "needle=",haystack[needleI],",found at index number",needleI
+
+
+
+def fs():
+    return search_slow(haystack, needle)
+   
+    
+if __name__ == "__main__":
+    import timeit
+    timer = timeit.Timer(fs)
+    result = timer.repeat(repeat = 1000, number = 10)
+    print("{:8.6f}".format(min(result)))
+#if __name__ == '__main__':
+    #import timeit
+    #print(timeit.timeit("findNeedle(needle)", setup="from__main__ import findNeedle, needle"))
