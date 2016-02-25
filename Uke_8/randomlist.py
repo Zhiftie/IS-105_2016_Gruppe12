@@ -41,15 +41,24 @@ print "needle=",haystack[needleI],",found at index number",needleI
 
 
 
-def fs():
+def Search_s():
     return search_slow(haystack, needle)
+
+def Search_f():
+    return search_fast(haystack, needle)
    
     
 if __name__ == "__main__":
+    """
+    timeit test for the search slow function
+    """
     import timeit
-    timer = timeit.Timer(fs)
-    result = timer.repeat(repeat = 1000, number = 10)
-    print("{:8.6f}".format(min(result)))
+    timer = timeit.Timer(Search_s)
+    result = timer.repeat(repeat = 100, number = 10)
+    print ("{:8.6f}".format(min(result)))
+    timer = timeit.Timer(Search_f)
+    result = timer.repeat(repeat = 100, number = 10)
+    print ("{:8.6f}".format(min(result)))
 #if __name__ == '__main__':
     #import timeit
     #print(timeit.timeit("findNeedle(needle)", setup="from__main__ import findNeedle, needle"))
