@@ -5,8 +5,8 @@ if __name__ == "__main__":
     """
     import timeit
     timer = timeit.Timer(Search_s)
-    result = timer.repeat(repeat = 100, number = 10)
+    result = timer.repeat(repeat = 100, number = 100)
     print ("{:8.6f}".format(min(result)))
     timer = timeit.Timer(Search_f)
-    result = timer.repeat(repeat = 100, number = 10)
+    result = timer.repeat(repeat = 100, number = 100)
     print ("{:8.6f}".format(min(result)))
