@@ -1,10 +1,10 @@
 from random import shuffle
 
-ln = 10000 # lenght of list used in longLnShiffle function
+ln = 100# length of list used in shufflelist function
 haystack = []
 var1 = 2
 var2 = 9
-needle = 123
+needle = len(haystack)/2
 needleFound = False
 def make2dlist():
     list1 = np.arange(100).reshape(2,50)
@@ -25,6 +25,7 @@ def search_fast(haystack, needle):
     for item in haystack:
         if item == needle:
             return True
+    shuffle(haystack)
     return False
 
 def search_slow(haystack, needle):
@@ -32,6 +33,7 @@ def search_slow(haystack, needle):
     for item in haystack:
         if item == needle:
             return_value = True
+    shuffle(haystack)
     return return_value
 
 haystack = shufflelist()
