@@ -1,15 +1,15 @@
 from random import shuffle
 
-ln = 100 # length of list used in shufflelist function
+ln = 50 # length of list used in shufflelist function
 haystack = []
 var1 = 2
 var2 = 9
-needle = len(haystack)/2
+needle = "20"
 needleFound = False
 #def make2dlist():
   #  list1 = np.arange(100).reshape(2,50)
     
-def makeStringList(haystack):
+def shuffleStringList(haystack):
     strHaystack = []
     for i in haystack:
         stringList = ""
@@ -17,7 +17,7 @@ def makeStringList(haystack):
         strHaystack.append(stringList)
     return strHaystack
 
-def shufflelist():
+def shufflelist(haystack):
     for i in range(0,ln):
         haystack.append(i)
     shuffle(haystack)
@@ -28,7 +28,7 @@ def shufflelist():
 Iterates over a list looking for an item with the x value, once its found it returns the index number
 """
 def findNeedle(needle):
-    for i in[i for i, v in enumerate(haystack) if v == needle ]:
+    for i in[i for i, v in enumerate(haystack) if v is needle ]:
         return i
     
 def search_fast(haystack, needle):
@@ -46,9 +46,9 @@ def search_slow(haystack, needle):
     shuffle(haystack)
     return return_value
 
-haystack = shufflelist()
+haystack = shufflelist(haystack)
 needleI = findNeedle(needle)
-strHaystack = makeStringList(haystack)
+strHaystack = shufflelist(haystack)
 print "needle=",haystack[needleI],",found at index number",needleI
 
 
