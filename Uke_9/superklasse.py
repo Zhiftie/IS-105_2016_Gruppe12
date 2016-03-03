@@ -19,5 +19,8 @@ class SM:
         return [self.step(inp) for inp in inputs]
     
     
-    
+#Some machines do not take any inputs; in that case, we can simply call the SM run method, which
+#is equivalent to doing transduce on an input sequence of [None, None, None, ...].
 
+    def run(self, n = 10):
+        return self.transduce([None]*n)
