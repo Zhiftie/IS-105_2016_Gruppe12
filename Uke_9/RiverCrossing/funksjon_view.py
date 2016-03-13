@@ -5,18 +5,18 @@ def view(self):
     # ...
     print "** Here is the state of the river-world:"
 
-    # Venstre side
+    # Alle tilstander implementert i programmet
     allAtLeft       = "** [chicken fox grain man ---\\ \\_ _/ ________________ /---]"
     foxInBoatLeft   = "** [chicken grain man ---\\ \\_ fox _/ ________________ /---]"
     grainInBoatLeft   = "** [chicken man fox ---\\ \\_ grain _/ ________________ /---]"
     manInBoatLeft   = "** [chicken fox grain ---\\ \\_ man _/ ________________ /---]"
     chickenInBoatLeft   = "** [fox grain man ---\\ \\_ chicken _/ ________________ /---]"
     foxManInBoatLeft  = "** [chicken grain ---\\ \\_ fox, man _/ ________________ /---]"
-    grainManInBoat  = "** [chicken fox ---\\ \\_ grain, man _/ ________________ /---]"
-    chickenManInBoat  = "** [fox grain---\\ \\_ chicken, man _/ ________________ /---]"
+    grainManInBoatLeft  = "** [chicken fox ---\\ \\_ grain, man _/ ________________ /---]"
+    chickenManInBoatLeft  = "** [fox grain---\\ \\_ chicken, man _/ ________________ /---]"
     foxGrainInBoatLeft  = "** [chicken man ---\\ \\_ fox, grain _/ ________________ /---]"
     foxChickenInBoatLeft  = "** [grain man ---\\ \\_ fox, chicken _/ ________________ /---]"
-    grainCchickenInBoatLeft  = "** [fox man ---\\ \\_ grain, chicken _/ ________________ /---]"
+    grainChickenInBoatLeft  = "** [fox man ---\\ \\_ grain, chicken _/ ________________ /---]"
     manLoadOutChickenRight  = "** [fox grain ---\\ _________________\\_ chicken _/ /--- man]"
     foxOnRightWithBoat   = "** [chicken grain ---\\ _________________\\_ man _/ /--- fox]"
     grainOnRightWithBoat   = "** [chicken fox ---\\ _________________\\_ man _/ /--- grain]"
@@ -62,9 +62,52 @@ def view(self):
     # Dette er ikke en korrekt kode, - man b�r sjekke p� flere tilstandsvariabler
     # eller implementere datastrukturer som genererer "bilder" automatisk, basert p� innholdet
     # i databasen
-    if ['boat isat left'] in self.river_db:
-        print allAtLeft
-    elif ['boat isat right'] in self.river_db:
-        print onlyBoatAtRight
+    
+    #if ['boat isat left'] in self.river_db:
+        #print allAtLeft
+    #elif ['boat isat right'] in self.river_db:
+        #print onlyBoatAtRight
+    elif ['fox isin boat at left'] in self.river_db:
+        print foxInBoatAtLeft
+    elif ['grain isin boat at left'] in self.river_db:
+        print grainInBoatLeft
+    elif ['main isin boat at left'] in self.river_db:
+        print manInBoatLeft
+    elif ['chicken isin boat at left'] in self.river_db:
+        print chickenInBoatLeft
+    elif ['fox and man isin boat at left'] in self.river_db:
+        print foxManInBoatLeft
+    elif ['grain and man isin boat at left'] in self.river_db:
+        print grainManInBoatLeft
+    elif ['chicken and man isin boat at left'] in self.river_db:
+        print chickenManInBoatLeft
+    elif ['fox and grain isin boat at left'] in self.river_db:
+        print foxGrainInBoatLeft
+    elif ['fox and chicken isin boat at left'] in self.river_db:
+        print foxChickenInBoatLeft
+    elif ['grain and chicken isin boat at left'] in self.river_db: 
+        print grainChickenInBoatLeft
+    elif ['man takeout chicken at right'] in self.river_db:
+        print manLoadOutChickenRight
+    elif ['fox and boat at right'] in self.river_db:
+        print foxOnRightWithBoat
+    elif ['grain and boat at right'] in self.river_db:
+        print grainOnRightWithBoat
+    elif ['man and boat at right'] in self.river_db:
+        print manOnRightWithBoat
+    elif ['chicken and boat at rigt'] in self.river_db:
+        print chickenOnRightWithBoat
+    elif ['fox at right'] in self.river_db:
+        print foxOnRight
+    elif ['grain at right'] in self.river_db:
+        print grainOnRight
+    elif ['man at right'] in self.river_db:
+        print manOnRight
+    elif ['chicken at right'] in self.river_db:
+        print chickenOnRight
+    elif ['chicken and man at right'] in self.river_db:
+        print chickenManOnRight
+    
+        
     else:
         print ";;; MISHAP - SOMETHING WENT WRONG!"
