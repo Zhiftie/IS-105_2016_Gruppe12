@@ -1,39 +1,29 @@
 # -*- coding: utf-8 -*-
-# OBS! Dårlig kodingstil! For eksempel, kommentarer skal høre til funksjoner og være mellom '''disse'''
 
 from sm import SM
 from db import Database as d
 
 class River(SM):
     
-    river_db = [] # En klønete måte å definere database på, bør være i egen klasse og kanskje ikke en liste?
-    
-    # Blir kalt hver gang klassen blir instansiert
     def __init__(self, initialValue): 
         self.startState = initialValue
         self.river_db = self.startState
-
-    def crossriver(self):
-        # Meget primitiv implementasjon av crossriver, her må flere detaljer inn!
-        if ['boat isat left'] in self.river_db:
-            self.remove(['boat isat left'])
-            self.add(['boat isat right'])
-        elif ['boat isat right'] in self.river_db:
-            self.remove(['boat isat right'])
-            self.add(['boat isat left'])            
+     
     
     def putin(self, item):
         if boatLeft is True:
             if not d.boat:
-                d.boat.appen(item)
+                d.boat.append(item)
                 d.leftB.remove(item)
-            
+                if len(d.boat) <= 2 and "Man" not in d.boat:
+                    print "There is no one who can row the boat"
         else:
-            
-            
-            
-    
-    
+            if not d.boat:
+                d.boat.append(item)
+                d.rightB.remove(item)
+                if len(d.boat) <= 2 and "Man" not in d.boat:
+                    print "There is no one who can row the boat"
+        
     def takeOut(self, item):
         if item in d.boat:
             if boatLeft is true:
@@ -81,7 +71,7 @@ class River(SM):
     def getNextValues(self, state, inp):
         # input her er et kommandonavn og den tilsvarende funksjonen må kalles opp
         pass
-        
+    
     # Database "saker", bør ligge i egen modul
     def database(self):
         print self.river_db
@@ -89,7 +79,9 @@ class River(SM):
         self.river_db.append(item)
     def remove(self, item):
         self.river_db.remove(item) # typisk MISHAP, hvis item ikke finnes i listen river_db
-        
+    
+    def checkState(self):
+        if d
         
 # Test cases 
 r = River([['boat isat left'],['chicken isat left'],['fox isat left'],['man isat left'], ['grain isat left']])
