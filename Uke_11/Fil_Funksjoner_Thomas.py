@@ -1,4 +1,4 @@
-# Opprett en fil.
+# Opprett en fil
 import os
 
 def newFile():
