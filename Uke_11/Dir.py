@@ -26,10 +26,10 @@ dir1 = Dirs()
 #dir1.workingDir() kaller workingDir metode
 #dir1.statDir(snas)
 
-import os
-myfile="tmp/foo.txt"
+
 
 #Remove
+myfile="tmp/foo.txt"
 ##if file exists, delete it 
 def deleteFileIfExist():
     if os.path.isfile(myfile):
