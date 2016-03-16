@@ -14,6 +14,13 @@ class Filsys():
     def checkI(self, i):
         return self.dirI[i]
         
+    def removeEmptyListElements(self):
+        while '' in dirI:
+            dirI.remove('')
+    """
+^^^^^^^ metoden^^^^^^ burde legges inn i remove metoden, slik at
+bruker slipper å tenke på slikt. 
+    """
         
 fs = Filsys("Sys1")
 
