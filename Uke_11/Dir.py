@@ -57,39 +57,44 @@ dir1 = Dirs()
 
 
 
-
-
-
-
-
-
-
-#Remove
-myfile="tmp/foo.txt"
-#if file exists, delete it 
-def deleteFileIfExist():
-    if os.path.isfile(myfile):
-        os.remove(myfile)
-    else: #Show an error
-        print("Errror: %s file not found" % myfile)
+#Remove rmdir
+def rmdir(self, cmd):
+    if len(cmd) < 2 or cmd[1] == '':
+        print 'rmdir - remove directory'
+        print 'usage: rmdir <dir_name>'
+    else:
+        name = cmd[1]
+        if self.curr.is_dir(name):
+            self.curr.remove(name)
+            print 'Directory deleted.'
+        else:
+            print name, ' - invalid directory.' 
     
     
 #Sjekker om noden er en mappe (is_dir):
-##Return True if path is an existing directory. This follows symbolic links, so both islink() and isdir() can be true for the same path.
-def checkIfNodeIsDir():
-    if os.path.isdir(path):
-        print "it's a directory"
-    else:
-        print "it's a file"
+##Return True if path is an existing directory
+
+def is_dir(self, name):
+    if(self.is_file(name)) and self.get(name).type == 'dir':
+        return True
+    return False
+
     
 #Bytte til spesifisert mappe(chdir):
 ## Change the directory
-def changeDirectory():
-    os.chdir( path )
-    
-#Slette Mappe
-def deleteDir():
-    os.remove()
+def chdir(self, cmd):
+    if len(cmd) < 2 or cmd[1] == '':
+        print 'chdir - change directory.'
+        print 'usage: chdir <dir_name>'
+    else:
+        name = cmd[1]
+        if name == '..':
+            if self.curr.parent is not None:
+                self.curr = self.curr.parent
+            elif self.curr.is_dir(name):
+                self.curr = self.curr.get(name)
+            else:
+                print name, ' - invalid directory.'
 
 
 
