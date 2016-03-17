@@ -3,14 +3,10 @@ import os, sys, bpy
 
 class Dirs:
     def __init__(self):
-        pass
-    
-    dirList = []
-
-    def makeDir(self):
-        self.dirName = raw_input("Please input the name of your brand new directory \n" )
-        self.dirList.append( self.dirName )
-        return self.dirList
+        self.dirName = raw_input("Input name of your new directory \n " )
+        print "Whoa! You created the directory: %s " % self.dirName
+        self.filesInDirList = []
+        
     
     def searchDir(self):
         self.dirName = raw_input("Input searchword to find folder. \n " )
@@ -42,10 +38,12 @@ class Dirs:
             print "Sorry, %s not found. You could try the list method to find directories!" % self.dirName        
         
         self.dirName = raw_input("New name for directory" ) 
+        
         """
-Metodene ovenfor må testes i sammenheng med Filsys.py. 
+Metodene ovenfor ma testes i sammenheng med Filsys.py. 
 
         """
+   
    
     
         

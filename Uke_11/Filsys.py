@@ -22,5 +22,6 @@ class Filsys():
 bruker slipper å tenke på slikt. 
     """
         
-fs = Filsys("Sys1")
+fs = Filsys("Sys1")(d)
+
 
