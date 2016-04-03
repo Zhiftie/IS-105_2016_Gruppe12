@@ -3,7 +3,8 @@ class Filsys():
     
     def __init__(self, sysname):
         self.dirName = sysname
-        self.dirI= []
+        self.dirI= [] #Tom liste som skal lagre directories. 
+        
     
     def addDir(self):
         self.dirName = raw_input("Name folder >>>")

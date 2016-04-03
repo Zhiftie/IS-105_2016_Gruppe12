@@ -1,8 +1,18 @@
-import os, sys, bpy
+import sys
 
 
 class Dirs:
+    #Allows creation of new directory upon object creation.
+    #Appends list for files in directory.
     def __init__(self):
+        self.dirName = raw_input("Input the name of the head directory you want to create a new directory within.")
+        if self.dirName in dirI:
+            newDir = raw_input("Found head directory! Now give a name to your new sub directory.")
+            if newDir in dirI:
+                print "%s already exists, please use another unique name. " % newDir
+            else:
+                dirI.apend(  )
+        
         self.dirName = raw_input("Input name of your new directory \n " )
         print "Whoa! You created the directory: %s " % self.dirName
         self.filesInDirList = []
