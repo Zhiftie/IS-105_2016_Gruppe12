@@ -8,7 +8,7 @@ def makeIndex(maxSize):
       memIndex[str(i)] = None
    return memIndex
 """
-
+list showing all unused indexes for memory
 """
 def unusedInd():
    ui2 = []
@@ -31,17 +31,19 @@ def fillInd():
       adresse = []
       for k in xrange(1,len(f1[1])):
          index[str(k)]  = str(i)
+         i2.remove(str(k))
          adresse.append(k)
       return adresse
          
 """
 returns the content of a file from the index using the adress list
 """
-def showContent(fn): #
-   loop over adresse liste:
-      use items from list as keys for the memory dictionary
-      store values from index dict as string
-   return the content string
+def showContent(filename): 
+   #loop over adresse liste:
+      #use items from list as keys for the memory dictionary
+      #store values from index dict as string
+   #return the content string
+   pass
 """
 Lists all files
 """
