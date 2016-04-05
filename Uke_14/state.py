@@ -1,5 +1,11 @@
+"""
+RiverCrossing uten GUI, altså ICA uke 09 er lånt av GR 2. - https://github.com/Cmoen11/IS-105_2016_Gruppe-2-/tree/master/uke9_oppgaver
+"""
+
+# -*- coding: utf-8 -*-
 import tape as t
 import Art
+import Tkinter
 
 
 class State:
@@ -76,15 +82,30 @@ class State:
 
     def man_in_boat(self):
         if self.tape.man in 'boat':
-            answer = raw_input("Do you want to go outside of the boat? or do you want to travel?: type 1, to go out "
-                               "type 2 to travel: ")
+            root = Tk()
+            root.title("Do you want to go outside of the boat? or do you want to travel?: type 1, to go out "
+                       "type 2 to travel")
+
+            myvar = StringVar()
+
+            def mywarWritten(*args):
+                myvar.trace("w", mywarWritten)
+
+                label = Label(root, textvariable=myvar)
+                label.pack()
+                
+                text_entry = Entry(root, textvariable=myvar)
+                text_entry.pack()
+                
+                root.mainloop()
+                
             if self.tape.boat in 'left':
-                if answer == '1':
+                if myvar == '1':
                     self.tape.set_man('left')
                 else:
                     self.tape.set_boat('right')
             elif self.tape.boat in 'right':
-                if answer == '1':
+                if myvar == '1':
                     self.tape.set_man('right')
                 else:
                     self.tape.set_boat('left')
