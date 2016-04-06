@@ -10,7 +10,7 @@ class Database:
             not actually the figures in the game.
         '''
         self.boat = self.man = self.chicken = self.fox = self.corn = "left"
-        pass
+        pass    
 
     '''
         'Write' to the tape with changes..
