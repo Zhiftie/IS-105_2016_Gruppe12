@@ -1,11 +1,11 @@
 """
-RiverCrossing uten GUI, altså ICA uke 09 er lånt av GR 2. - https://github.com/Cmoen11/IS-105_2016_Gruppe-2-/tree/master/uke9_oppgaver
+RiverCrossing uten GUI, altså ICAif self.items_on_boat() != None: return None uke 09 er lånt av GR 2. - https://github.com/Cmoen11/IS-105_2016_Gruppe-2-/tree/master/uke9_oppgaver
 """
 
 # -*- coding: utf-8 -*-
 import tape as t
 import Art
-import Tkinter
+from Tkinter import *
 
 
 class State:
@@ -98,6 +98,7 @@ class State:
                 text_entry.pack()
                 
                 root.mainloop()
+                root.quit()
                 
             if self.tape.boat in 'left':
                 if myvar == '1':
@@ -210,23 +211,83 @@ class State:
         take_out_boat = None
 
         if item is self.tape.chicken:
-            answer = raw_input("Do you want to take the chicken out of the boat? Y/N : ")
-            answer = self.redefine_answer(answer)
-            if answer: take_out_boat = 1
+            myvar = root = Tk()
+            root.title("Do you want to take the chicken out of the boat? Y/N : ")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
+            myvar = self.redefine_myvar(myvar)
+            if myvar: take_out_boat = 1
         elif item is self.tape.corn:
-            answer = raw_input("Do you want to take the corn out of the boat? Y/N : ")
-            answer = self.redefine_answer(answer)
-            if answer: take_out_boat = 2
+            myvar = root = Tk()
+            root.title("Do you want to take the corn out of the boat? Y/N : ")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
+            myvar = self.redefine_myvar(myvar)
+            if myvar: take_out_boat = 2
         elif item is self.tape.fox:
-            answer = raw_input("Do you want to take the fox out of the boat? Y/N : ")
-            answer = self.redefine_answer(answer)
-            if answer: take_out_boat = 3
+            myvar = root = Tk()
+            root.title("Do you want to take the fox out of the boat? Y/N : ")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
+            myvar = self.redefine_myvar(myvar)
+            if myvar: take_out_boat = 3
 
         # if the user has answered no on the previous question
         if take_out_boat is None:
-            answer = raw_input("Do you want to go inside the boat? Y/N : ")
-            answer = self.redefine_answer(answer)
-            if answer: take_out_boat = 4
+            myvar = root = Tk()
+            root.title("Do you want to take the fox out of the boat? Y/N : ")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
+            myvar = self.redefine_myvar(myvar)
+            if myvar: take_out_boat = 4
         return take_out_boat
 
     def man_no_items_boat(self):
@@ -239,16 +300,31 @@ class State:
         if self.tape.man in self.tape.chicken \
                 and self.tape.man in self.tape.corn \
                 and self.tape.man in self.tape.fox:
-            answer = raw_input("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2."
-                               "Put corn inside the boat, type 3. Put fox inside the boat type 4: ")
+            myvar = root = Tk()
+            root.title("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2."
+                                           "Put corn inside the boat, type 3. Put fox inside the boat type 4: ")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
 
-            if answer == '1':
+            if myvar == '1':
                 self.tape.set_man('boat')
-            elif answer == '2':
+            elif myvar == '2':
                 self.tape.set_chicken('boat')
-            elif answer == '3':
+            elif myvar == '3':
                 self.tape.set_corn('boat')
-            elif answer == '4':
+            elif myvar == '4':
                 self.tape.set_fox('boat')
             else:
                 pass
@@ -256,14 +332,29 @@ class State:
 
         elif self.tape.man in self.tape.chicken \
                 and self.tape.man in self.tape.corn:
-            answer = raw_input("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2."
-                               "Put corn inside the boat, type 3.")
+            answer = root = Tk()
+            root.title("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2."
+                                           "Put corn inside the boat, type 3.")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
 
-            if answer == '1':
+            if myvar == '1':
                 self.tape.set_man('boat')
-            elif answer == '2':
+            elif myvar == '2':
                 self.tape.set_chicken('boat')
-            elif answer == '3':
+            elif myvar == '3':
                 self.tape.set_corn('boat')
             else:
                 pass
@@ -272,13 +363,29 @@ class State:
 
         elif self.tape.man in self.tape.fox \
                 and self.tape.man in self.tape.corn:
-            answer = raw_input("Choose one: Go inside the boat type 1. Put fox inside the boat type 2."
-                               "Put corn inside the boat, type 3.")
-            if answer == '1':
+            myvar = root = Tk()
+            root.title("Choose one: Go inside the boat type 1. Put fox inside the boat type 2."
+                                           "Put corn inside the boat, type 3.")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
+
+            if myvar == '1':
                 self.tape.set_man('boat')
-            elif answer == '2':
+            elif myvar == '2':
                 self.tape.set_fox('boat')
-            elif answer == '3':
+            elif myvar == '3':
                 self.tape.set_corn('boat')
             else:
                 pass
@@ -286,54 +393,116 @@ class State:
 
         elif self.tape.man in self.tape.fox \
                 and self.tape.man in self.tape.chicken:
-            answer = raw_input("Choose one: Go inside the boat type 1. Put fox inside the boat type 2."
-                               "Put chicken inside the boat, type 3.")
-            if answer == '1':
+            myvar = root = Tk()
+            root.title("Choose one: Go inside the boat type 1. Put fox inside the boat type 2."
+                                           "Put chicken inside the boat, type 3.")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
+
+            if myvar == '1':
                 self.tape.set_man('boat')
-            elif answer == '2':
+            elif myvar == '2':
                 self.tape.set_fox('boat')
-            elif answer == '3':
+            elif myvar == '3':
                 self.tape.set_chicken('boat')
             else:
                 pass
             return True
 
         elif self.tape.man in self.tape.chicken:
-            answer = raw_input("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2.")
-            if answer == '1':
+            myvar = root = Tk()
+            root.title("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2.")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
+
+            if myvar == '1':
                 self.tape.set_man('boat')
-            elif answer == '2':
+            elif myvar == '2':
                 self.tape.set_chicken('boat')
             else:
                 pass
             return True
 
         elif self.tape.man in self.tape.fox:
-            answer = raw_input("Choose one: Go inside the boat type 1. Put fox inside the boat type 2.")
-            if answer == '1':
+            answer = root = Tk()
+            root.title("Choose one: Go inside the boat type 1. Put fox inside the boat type 2.")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
+            if myvar == '1':
                 self.tape.set_man('boat')
-            elif answer == '2':
+            elif myvar == '2':
                 self.tape.set_fox('boat')
             else:
                 pass
             return True
 
         elif self.tape.man in self.tape.corn:
-            answer = raw_input("Choose one: Go inside the boat type 1. Put corn inside the boat type 2.")
-            if answer == '1':
+            myvar = root = Tk()
+            root.title("Choose one: Go inside the boat type 1. Put corn inside the boat type 2.")
+            myvar = StringVar()
+            
+            def mywarWritten(*args):
+                print myvar.get()
+            
+            myvar.trace("w", mywarWritten)
+            
+            label = Label(root, textvariable=myvar)
+            label.pack()
+            text_entry = Entry(root, textvariable=myvar)
+            text_entry.pack()
+            
+            root.mainloop()
+            root.quit()
+            if myvar == '1':
                 self.tape.set_man('boat')
-            elif answer == '2':
+            elif myvar == '2':
                 self.tape.set_corn('boat')
             else:
                 pass
             return True
 
     def redefine_answer(self, answer):
-        if answer == 'y':
-            answer = True
+        if myvar == 'y':
+            myvar = True
         else:
-            answer = False
-        return answer
+            myvar = False
+        return myvar
 
 
 def test():
