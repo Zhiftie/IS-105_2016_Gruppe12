@@ -22,7 +22,7 @@ class State:
         # if the man is at left, and at least 1 item are at left as well. And boat do not include any items
         if self.tape.man in 'left' and 'left' in (t.fox, t.corn, t.chicken) and 'boat' not in (
                     t.fox, t.corn, t.chicken):
-            tilstand1()
+            tilstand1() #kalles fra a_boat_all_left_1 moudlen. 
 
         # man left and boat has one item
         elif self.tape.man in 'left' and 'boat' in (t.fox, t.corn, t.chicken):
