@@ -1,12 +1,12 @@
 """
-RiverCrossing uten GUI, altså ICAif self.items_on_boat() != None: return None uke 09 er lånt av GR 2. - https://github.com/Cmoen11/IS-105_2016_Gruppe-2-/tree/master/uke9_oppgaver
+RiverCrossing uten GUI, altsï¿½ ICAif self.items_on_boat() != None: return None uke 09 er lï¿½nt av GR 2. - https://github.com/Cmoen11/IS-105_2016_Gruppe-2-/tree/master/uke9_oppgaver
 """
 
 # -*- coding: utf-8 -*-
 import tape as t
 import Art
 from Tkinter import *
-from a_boat_all_left_1 import *
+from art_1 import *
 
 
 class State:
@@ -22,40 +22,40 @@ class State:
         # if the man is at left, and at least 1 item are at left as well. And boat do not include any items
         if self.tape.man in 'left' and 'left' in (t.fox, t.corn, t.chicken) and 'boat' not in (
                     t.fox, t.corn, t.chicken):
-            tilstand1() #kalles fra a_boat_all_left_1 moudlen. 
+            tilstand_1() #kalles fra art_1 moudlen. 
 
         # man left and boat has one item
         elif self.tape.man in 'left' and 'boat' in (t.fox, t.corn, t.chicken):
-            print self.art.art_boat['a_boat_noPerson_item']
+            tilstand_2() #kalles fra art_1 moudlen.
 
         # man in boat, and boat left, and 1 item inside the boat
         elif self.tape.man in 'boat' and 'boat' in (t.fox, t.corn, t.chicken) and 'left' in t.boat:
-            print self.art.art_boat['a_boat_items_left']
+            tilstand_3() #kalles fra art_1 moudlen.
 
         # man in boat, 1 item inside the boat, and the boat is right
         elif self.tape.man in 'boat' and 'boat' in (t.fox, t.corn, t.chicken) and 'right' in t.boat:
-            print self.art.art_boat['a_boat_items_right']
+            tilstand_4() #kalles fra art_1 moudlen.
 
         # man right and atleast one item right and boat has no items
         elif self.tape.man in 'right' and 'right' in (t.fox, t.corn, t.chicken) and 'boat' not in (
                     t.fox, t.corn, t.chicken):
-            print self.art.art_boat['a_boat_all_right']
+            tilstand_5() #kalles fra art_1 moudlen.
 
         # man right, and boat has one item and the right has no items
         elif self.tape.man in 'right' and 'boat' in (t.fox, t.corn, t.chicken) and 'right' not in ((t.fox, t.corn, t.chicken)):
-            print self.art.art_b['b_with_items_person_noItems']
+            tilstand_6() #kalles fra art_1 moudlen.
 
         # man right and boat has one item and right has atleast one item
         elif self.tape.man in 'right' and 'boat' in (t.fox, t.corn, t.chicken) and 'right' in ((t.fox, t.corn, t.chicken)):
-            print self.art.art_b['b_with_items_person']
+            tilstand_7() #kalles fra art_1 moudlen.
 
         # only man in boat and he is right, no items
         elif self.tape.man in 'boat' and 'right' in t.boat:
-            print self.art.art_boat['b_boat_onlyman_right']
+            tilstand_8() #kalles fra art_1 moudlen.
 
         # only man in boat and he is left, no items
         elif self.tape.man in 'boat' and 'left' in t.boat:
-            print self.art.art_boat['a_boat_onlyman_left']
+            tilstand_9() #kalles fra art_1 moudlen.
 
     def check_state(self):  # if everything is left, as it would in the start of the game.
         self.show_state()
