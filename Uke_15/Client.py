@@ -9,12 +9,6 @@ def connectS():
     """
     Connect through predefined socket. Socket modul, socket server.
     """
-def keyLeg():
-    kL = {}
-    for k in l1:
-        kL.
-        
-        
 def listCmd():
     """
     print list of all the different commands the player can use
