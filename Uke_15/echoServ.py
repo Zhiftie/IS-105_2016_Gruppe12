@@ -36,8 +36,11 @@ while 1:
      
     if not data: 
         break
-     
-    reply = 'OK...' + data
+    string = "hei pa deg brah" #det som skal printes hvis linjen under kjøres. 
+    if data == "hei": #data = input fra brukeren. 
+        s.sendto(string, addr) #dette er hva som faktisk sendes til brukeren. 
+        
+    reply = 'OK...' + data 
      
     s.sendto(reply , addr)
     print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
