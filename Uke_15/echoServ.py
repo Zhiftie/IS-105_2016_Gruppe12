@@ -2,11 +2,11 @@
     Simple udp socket server
     Silver Moon (m00n.silv3r@gmail.com)
 '''
- 
+
 import socket
 import sys
  
-HOST = ''   # Symbolic name meaning all available interfaces
+HOST = 'localhost'   # Symbolic name meaning all available interfaces
 PORT = 8888 # Arbitrary non-privileged port
  
 # Datagram (udp) socket

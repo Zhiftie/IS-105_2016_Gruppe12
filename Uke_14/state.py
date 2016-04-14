@@ -98,7 +98,7 @@ class State:
                 text_entry = Entry(root, textvariable=myvar)
                 text_entry.pack()
                 
-                root.mainloop()
+                root.mainloop() #Holder vinduet åpent hele tiden. 
                 root.quit()
                 
             if self.tape.boat in 'left':
