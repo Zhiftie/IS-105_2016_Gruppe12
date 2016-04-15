@@ -514,5 +514,5 @@ def test():
         if state.check_state() is True:
             dead = True
 
-
-test()
+if __name__ == "__main__":
+    test()
