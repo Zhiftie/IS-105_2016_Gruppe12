@@ -1,4 +1,3 @@
-echoServ og echoClient fungerer som server og klienten. For å gjøre spillet riverCrossing mer effektivt når det skal kjøres over serveren
-har vi laget en ny fil som skal fange opp alle kommandoer fra brukeren. (client.py) 
-client.py fanger opp kommandoer gjennom en dictionary - brukeren skriver en kommando, og dictionary finner kommandoen for så koble denne
-opp mot en spesifikk funksjon i spillet. 
+Den fungerende versjonen finnes i mappen "rivercrossingV2 - final. 
+Den andre mappen, med tildere forsøk, er også tatt med i innleveringen for å vise hvordan vi har tenkt, og hvordan vi har kommmet frem til
+vårt endelige resultat. 
