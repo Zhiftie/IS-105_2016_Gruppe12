@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 import socket   #for sockets
 import sys  #for exit
          

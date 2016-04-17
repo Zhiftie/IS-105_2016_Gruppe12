@@ -1,15 +1,16 @@
-
+# -*- coding: utf-8 -*-
 import socket
 import sys
 
 HOST = 'localhost'   # Symbolic name meaning all available interfaces
 PORT = 8888 # Arbitrary non-privileged port
 
-
+help = "This is the rivercrossing puzzle\nThe goal is to get all the animals to the other side \nwithout the fox eating the chicken or the chicken eating the corn \nOnly the man and one object can be in the boat at the same time\nFor a list of all the available commands type commandhelp"
 left = ["c","m","f","g"]
 boat = []
 right= []
 boatPos = "left"
+done = False
 
 def putIn():
     reply = "Put in who?"
@@ -28,11 +29,11 @@ def showState():
     state = "Left Bank:"+ ",".join(left), "Boat: " + ",".join(boat) ,"Right bank: " +",".join(right) + "Boat position: " + boatPos
     return state
 
-def manInBoat():
-    if boatPos:
+def manInBoat(): 
+    if boatPos == "left":
         man = left.index("m")
         boat.append(left.pop(man))
-    if not boatPos:
+    if boatPos == "right":
         man = right.index("m")
         boat.append(right.pop(man))
 
@@ -43,47 +44,59 @@ def crossRiver():
     else:
         boatPos = "left"
     checkState()
-    showState()
 
 def unload():
+    reply = "Unload who?"
+    s.sendto(reply, addr)
+    d = s.recvfrom(1024)
+    data = d[0]    
     if boatPos == "left":
-        o2U = boat.index(raw_input("Choose object to unload >> "))
+        o2U = boat.index(data)
         left.append(boat.pop(o2U))
     if boatPos == "right":
-        o2U = boat.index(raw_input("Choose object to unload >> "))
+        o2U = boat.index(data)
         right.append(boat.pop(o2U))
-    showState()
+"""
+state check, ends process if an end state is reached
+"""
 
 def checkState():
+    global done
     if set(['c','f']).issubset(set(left)) and "m" not in left:
-        print "fox ate the chicken on the left bank" #flesh out
+        endS = "fox ate the chicken on the left bank"
+        s.sendto(endS, addr) # 
+        done = True
     if set(['c','g']).issubset(set(left)) and "m" not in left:
-        print "chicken ate the grain on the left bank"
+        endS = "chicken ate the grain on the left bank"
+        s.sendto(endS, addr)
+        done = True
     if set(['c','f']).issubset(set(right)) and "m" not in right:
-        print "Fox ate chicken on the right bank"
+        endS = "Fox ate chicken on the right bank"
+        s.sendto(endS, addr)
+        done = True
     if set(['c','g']).issubset(set(right)) and "m" not in right:
-        print "chicken ate the grain on the right bank"
+        endS = "chicken ate the grain on the right bank"
+        s.sendto(endS, addr)
+        done = True
+    if ("f", "c","m","g") in right: # not done
+        endS = "Everyone has crossed safely!"
+        s.sendto(endS, addr)
+        done = True    
     else:
         pass
+
 def exitBoat():
     man = boat.index("m")
-    if boatPos:
+    if boatPos == "left":
         left.append(boat.pop(man))
-    if not boatPos:
+    if boatPos == "right":
         right.append(boat.pop(man))
-    return showState()
+    
        
-def cmd(data):
-    cmd = data
-    if cmd in cmdL:
-        cmdL[cmd]
-    else:
-        return "Command not found"
+"""
+Help functions not finished, move to client maybe.
 
-def help():
-    return "This is the rivercrossing puzzle \nThe goal is to get all the animals to the other side \nwithout the fox eating the chicken or the chicken eating the corn \n" ,\
-          "Only the man and one object can be in the boat at the same time \n", \
-          "For a list of all the available commands type commandhelp"
+"""
 def cHelp():
     for k, v in cmdH.iteritems():
         return str(k + ":" + v)
@@ -96,7 +109,10 @@ cmdH = {"putin" : "Puts an item in the boat\n",
         "exitboat" : "moves the man from the boat to the bank\n",
         "help" : "Shows the game description and the objective\n"}
 
-cmdL = {"putin" : putIn, "show" : showState, "maninboat": manInBoat, "cross" : crossRiver, "unload" : unload, "exitboat" : exitBoat, "help" : help, "commandhelp" : cHelp }
+"""
+List of all the available commands
+"""
+cmdL = {"putin" : putIn, "show" : showState, "maninboat": manInBoat, "cross" : crossRiver, "unload" : unload, "exitboat" : exitBoat }
 
 # Datagram (udp) socket
 try :
@@ -119,7 +135,7 @@ print 'Socket bind complete'
 
  
 #now keep talking with the client
-while (1):
+while not done:
     # receive data from client (data, addr)
     d = s.recvfrom(1024)
     data = d[0]
@@ -135,3 +151,13 @@ while (1):
         reply = "Command not found"
         s.sendto(reply, addr)
 s.close()   
+
+"""
+Dette er en veldig naiv versjon. Det forventes at en eventuell bruker vet nøyaktig hvilken forskjellige objekter som kan plasseres hvor og at reglene følges.
+I en ferdig versjon ville vi brukt flere kontroller for å sjekke om den inputen som rcClient gir faktisk stemmer og kan gjennomføres uten at "serveren" crasher.
+De fleste funksjonenen returnerer ikke noen verdi til klienten, men oppdaterer tilstanden på server, som igjen sender et oppdatert tilstandsbilde til klienten. 
+Unntakene er putIn funksjonen, unload funksjonen, og checkState.
+putIn og unload krever at klienten spesifiserer hvilken gjennstand som skal flyttes. checkState oppdaterer klienten dersom "serveren" de når en slutt tilstand
+
+Socket koding i rcClient og rcServer hentet fra http://www.binarytides.com/programming-udp-sockets-in-python
+"""
