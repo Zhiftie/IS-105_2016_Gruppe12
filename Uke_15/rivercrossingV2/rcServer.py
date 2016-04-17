@@ -9,49 +9,47 @@ PORT = 8888 # Arbitrary non-privileged port
 left = ["c","m","f","g"]
 boat = []
 right= []
-boatLeft = True
+boatPos = "left"
 
 def putIn():
-    if boatLeft:
-        obj2Put = left.index(raw_input("Choose on of the object to put into the boat >> "))
+    reply = "Put in who?"
+    s.sendto(reply, addr)
+    d = s.recvfrom(1024)
+    data = d[0]
+    if boatPos == "left":
+        obj2Put = left.index(data)
         boat.append(left.pop(obj2Put))
-        showState()
-    if not boatLeft:
-        obj2Put = right.index(raw_input("Choose on of the object to put into the boat"))
+    if boatPos == "right":
+        obj2Put = right.index(data)
         boat.append(right.pop(obj2Put))
-        showState()
+
 
 def showState():
-    state = "Left Bank:"+ ",".join(left), "Boat: " + ",".join(boat) ,"Right bank: " +",".join(right)
-    #if boatLeft:
-        #state += " Boat at left"
-    #else:
-        #state += " Boat at Right"
+    state = "Left Bank:"+ ",".join(left), "Boat: " + ",".join(boat) ,"Right bank: " +",".join(right) + "Boat position: " + boatPos
     return state
 
 def manInBoat():
-    if boatLeft:
+    if boatPos:
         man = left.index("m")
         boat.append(left.pop(man))
-    if not boatLeft:
+    if not boatPos:
         man = right.index("m")
         boat.append(right.pop(man))
-    showState()
 
 def crossRiver():
-    global boatLeft
-    if boatLeft:
-        boatLeft = False
+    global boatPos
+    if boatPos == "left":
+        boatPos = "right"
     else:
-        boatLeft = True
+        boatPos = "left"
     checkState()
     showState()
 
 def unload():
-    if boatLeft:
+    if boatPos == "left":
         o2U = boat.index(raw_input("Choose object to unload >> "))
         left.append(boat.pop(o2U))
-    if not boatLeft:
+    if boatPos == "right":
         o2U = boat.index(raw_input("Choose object to unload >> "))
         right.append(boat.pop(o2U))
     showState()
@@ -69,9 +67,9 @@ def checkState():
         pass
 def exitBoat():
     man = boat.index("m")
-    if boatLeft:
+    if boatPos:
         left.append(boat.pop(man))
-    if not boatLeft:
+    if not boatPos:
         right.append(boat.pop(man))
     return showState()
        
@@ -129,8 +127,11 @@ while (1):
      
     if not data: 
         break
-    if data:
-        reply = str(cmd(data))
-        reply
-        s.sendto(reply, addr) 
+    if data in cmdL:
+        cmdL[data]()
+        reply = str(showState())
+        s.sendto(reply, addr)
+    elif data not in cmdL:
+        reply = "Command not found"
+        s.sendto(reply, addr)
 s.close()   
