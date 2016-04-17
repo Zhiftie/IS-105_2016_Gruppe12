@@ -1,19 +1,21 @@
+# -*- coding: utf-8 -*-
 """
-RiverCrossing uten GUI, alts� ICAif self.items_on_boat() != None: return None uke 09 er l�nt av GR 2. - https://github.com/Cmoen11/IS-105_2016_Gruppe-2-/tree/master/uke9_oppgaver
+RiverCrossing uten GUI, altsï¿½ ICAif self.items_on_boat() != None: return None uke 09 er lï¿½nt av GR 2. - https://github.com/Cmoen11/IS-105_2016_Gruppe-2-/tree/master/uke9_oppgaver
 """
 
 # -*- coding: utf-8 -*-
 import tape as t
 from Tkinter import *
 from art_1 import *
+from Art import * 
 
 
 class State:
     def __init__(self):
         self.tape = t.Database()  # create new tape for the boat project
-        self.art = Art.Art()  # create an art object, to show us some graphics
-        # self.tape.set_chicken('boat')
-        # self.tape.set_man('right')
+        #self.art = Art.Art()  # create an art object, to show us some graphics
+        self.tape.set_chicken('boat')
+        self.tape.set_man('right')
 
     def show_state(self):
         t = self.tape
@@ -97,7 +99,7 @@ class State:
                 text_entry = Entry(root, textvariable=myvar)
                 text_entry.pack()
                 
-                root.mainloop() #Holder vinduet �pent hele tiden. 
+                root.mainloop() #Holder vinduet åpent hele tiden. 
                 root.quit()
                 
             if self.tape.boat in 'left':
@@ -512,5 +514,5 @@ def test():
         if state.check_state() is True:
             dead = True
 
-
-test()
+if __name__ == "__main__":
+    test()
