@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from Tkinter import *
-
+from tape import * 
 
 
 class RiverCrossing:
@@ -47,7 +47,7 @@ class RiverCrossing:
         takeOutC = Button(bottomFrame, text="Take chicken out of boat", bg="white", fg="black")
         takeOutF = Button(bottomFrame, text="Take fox out of boat", bg="white", fg="black")
         takeOutG = Button(bottomFrame, text="Take grain out of boat", bg="white", fg="black")
-        crossRiver = Button(bottomFrame, text="Cross River", bg="black", fg="white")
+        crossRiver = Button(bottomFrame, text="Cross River", bg="black", fg="white", command= lambda: set_boat(new_pos))
         
         help = Button(helpFrame, text="Help", bg="white", fg="red")
         quit = Button(helpFrame, text="Quit game", bg= "black", fg="red", command=w.quit)
