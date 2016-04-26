@@ -1,19 +1,30 @@
 from random import shuffle
 
-ln = 100# length of list used in shufflelist function
-haystack = []
+
 var1 = 2
-var2 = 9
-needle = len(haystack)/2
+var2 = 9  
 needleFound = False
+haystack = []
 def make2dlist():
     list1 = np.arange(100).reshape(2,50)
-def shufflelist():
-    for i in range(0,ln):
+def makeHaystack(size): #max size: 536 870 912
+    for i in range(0,size):
         haystack.append(i)
-    shuffle(haystack)
     return haystack
 
+def setNeedleStart():
+    start = haystack[100]
+    return start
+
+def setNeedleMiddle():
+    middle = (len(haystack)/2)
+    return haystack[middle]
+
+def setNeedleEnd():
+    end = (len(haystack)-140)
+    return haystack[end]
+    
+    
 """
 Iterates over a list looking for an item with the x value, once its found it returns the index number
 """
@@ -25,7 +36,6 @@ def search_fast(haystack, needle):
     for item in haystack:
         if item == needle:
             return True
-    shuffle(haystack)
     return False
 
 def search_slow(haystack, needle):
@@ -33,13 +43,10 @@ def search_slow(haystack, needle):
     for item in haystack:
         if item == needle:
             return_value = True
-    shuffle(haystack)
     return return_value
 
-haystack = shufflelist()
-needleI = findNeedle(needle)
-
-print "needle=",haystack[needleI],",found at index number",needleI
+#haystack = shufflelist()
+#needleI = findNeedle(needle)
 
 
 
@@ -49,18 +56,29 @@ def Search_s():
 def Search_f():
     return search_fast(haystack, needle)
    
-    
+
+sSlow = []
+sFast = []
+haystack = makeHaystack(10000000)  #max size: 536 870 912  
+needle = setNeedleStart()
+print len(haystack)
 if __name__ == "__main__":
     """
     timeit test for the search slow function
     """
     import timeit
+    global sSlow
+    global sFast
     timer = timeit.Timer(Search_s)
-    result = timer.repeat(repeat = 100, number = 10)
+    result = timer.repeat(repeat = 10, number = 1)
+    sSlow = result
     print ("{:8.6f}".format(min(result)))
     timer = timeit.Timer(Search_f)
-    result = timer.repeat(repeat = 100, number = 10)
+    result = timer.repeat(repeat = 10, number = 1)
+    sFast = result
     print ("{:8.6f}".format(min(result)))
+    
+print sSlow
 #if __name__ == '__main__':
     #import timeit
     #print(timeit.timeit("findNeedle(needle)", setup="from__main__ import findNeedle, needle"))
