@@ -3,8 +3,10 @@ from Tkinter import *
 from tape import * 
 
 
+
 class RiverCrossing:
     def __init__(self, master):
+        self.tape = Database()
         
 
 
@@ -47,8 +49,8 @@ class RiverCrossing:
         takeOutC = Button(bottomFrame, text="Take chicken out of boat", bg="white", fg="black")
         takeOutF = Button(bottomFrame, text="Take fox out of boat", bg="white", fg="black")
         takeOutG = Button(bottomFrame, text="Take grain out of boat", bg="white", fg="black")
-        crossRiver = Button(bottomFrame, text="Cross River", bg="black", fg="white", command= lambda: set_boat(new_pos))
-        
+        crossRiver = Button(bottomFrame, text="Cross River", bg="black", fg="white", command= lambda: Database.set_boat(new_pos)) 
+                                                                                                                      
         help = Button(helpFrame, text="Help", bg="white", fg="red")
         quit = Button(helpFrame, text="Quit game", bg= "black", fg="red", command=w.quit)
         
@@ -72,7 +74,6 @@ class RiverCrossing:
         
 
 #Plasserer knappene
-
 root = Tk()
 rc = RiverCrossing(root)
 root.mainloop()
