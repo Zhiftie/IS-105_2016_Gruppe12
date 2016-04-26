@@ -1,14 +1,12 @@
-from random import shuffle
+import numpy as np
+import matplotlib.pyplot as plt
+import timeit
 
-
-var1 = 2
-var2 = 9  
-needleFound = False
-haystack = []
 def make2dlist():
     list1 = np.arange(100).reshape(2,50)
 def makeHaystack(size): #max size: 536 870 912
-    for i in range(0,size):
+    haystack =  []
+    for i in xrange(0,size):
         haystack.append(i)
     return haystack
 
@@ -56,29 +54,46 @@ def Search_s():
 def Search_f():
     return search_fast(haystack, needle)
    
-
-sSlow = []
-sFast = []
-haystack = makeHaystack(10000000)  #max size: 536 870 912  
+  
+haystack = makeHaystack(10000)
 needle = setNeedleStart()
-print len(haystack)
-if __name__ == "__main__":
-    """
-    timeit test for the search slow function
-    """
-    import timeit
-    global sSlow
-    global sFast
-    timer = timeit.Timer(Search_s)
-    result = timer.repeat(repeat = 10, number = 1)
-    sSlow = result
-    print ("{:8.6f}".format(min(result)))
-    timer = timeit.Timer(Search_f)
-    result = timer.repeat(repeat = 10, number = 1)
-    sFast = result
-    print ("{:8.6f}".format(min(result)))
+
+#if __name__ == "__main__":
+    #"""
+    #timeit test for the search slow function
+    #"""
+def testS():
+    sSlow = []
+    haystack = makeHaystack(10000)
+    needle = setNeedleStart()
+    while len(haystack) <= 1000000: #haystack resettes ikke. Fix
+        timer = timeit.Timer(Search_s)
+        result = timer.repeat(repeat = 1, number = 10)        
+        sSlow.append((len(haystack),min(result)))
+        makeHaystack(int(len(haystack)+10000))
+    return sSlow
+
+def testF():
+    sFast = []
+    haystack = makeHaystack(10000)
+    needle = setNeedleStart()
+    while len(haystack) <= 1000000:
+        timer = timeit.Timer(Search_f)
+        result = timer.repeat(repeat = 1, number = 10)
+        sFast.append((len(haystack),min(result)))
+        makeHaystack(int(len(haystack)+10000))
+    return sFast
+        
     
-print sSlow
-#if __name__ == '__main__':
-    #import timeit
-    #print(timeit.timeit("findNeedle(needle)", setup="from__main__ import findNeedle, needle"))
+fList = testF()
+sList = testS()
+
+def graph(l1):
+    plt.plot(l1)
+    plt.show()
+    
+graph(fList)
+graph(sList)
+        
+        
+    
