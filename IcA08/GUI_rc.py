@@ -6,10 +6,8 @@ from tape import *
 
 class RiverCrossing:
     def __init__(self, master):
-        self.tape = Database()
         
-
-
+        
         master.title("River Crossing")
         w = Canvas(master, width=900, height=900)
         w.pack()
@@ -26,7 +24,7 @@ class RiverCrossing:
         global grain 
         grain = w.create_oval(130, 180, 160, 170, fill="white") # Grain = L
         global man 
-        man = w.create_oval(350, 250, 205, 210, fill="black") # Man = L 
+        man = w.create_oval(150, 250, 180, 200, fill="black") # Man = L 
         global fox 
         fox = w.create_oval(100, 130, 180, 150, fill="orange") # Fox = L 
         
@@ -49,7 +47,7 @@ class RiverCrossing:
         takeOutC = Button(bottomFrame, text="Take chicken out of boat", bg="white", fg="black")
         takeOutF = Button(bottomFrame, text="Take fox out of boat", bg="white", fg="black")
         takeOutG = Button(bottomFrame, text="Take grain out of boat", bg="white", fg="black")
-        crossRiver = Button(bottomFrame, text="Cross River", bg="black", fg="white", command= lambda: Database.set_boat(new_pos)) 
+        crossRiver = Button(bottomFrame, text="Cross River", bg="black", fg="white") 
                                                                                                                       
         help = Button(helpFrame, text="Help", bg="white", fg="red")
         quit = Button(helpFrame, text="Quit game", bg= "black", fg="red", command=w.quit)
@@ -67,13 +65,11 @@ class RiverCrossing:
         help.pack()
         quit.pack(fill=X)
         
-        def manGetIn():
-            man = w.create_oval(350, 250, 205, 210, fill="black")
-            #Hvilken side er båten på? Fuark.
         
         
 
 #Plasserer knappene
+
 root = Tk()
 rc = RiverCrossing(root)
 root.mainloop()
