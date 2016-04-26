@@ -26,7 +26,7 @@ class RiverCrossing:
         global grain 
         grain = w.create_oval(130, 180, 160, 170, fill="white") # Grain = L
         global man 
-        man = w.create_oval(350, 250, 205, 210, fill="black") # Man = L 
+        man = w.create_oval(150, 250, 180, 200, fill="black") # Man = L 
         global fox 
         fox = w.create_oval(100, 130, 180, 150, fill="orange") # Fox = L 
         
@@ -41,7 +41,7 @@ class RiverCrossing:
         helpFrame.pack(side=RIGHT)
         
         
-        getIn = Button(bottomFrame, text="Get in boat", bg="white", fg="black")
+        getIn = Button(bottomFrame, text="Get in boat", bg="white", fg="black", command= lambda: Database.manGetIn)
         getOut = Button(bottomFrame, text="Get out of boat", bg="white", fg="black")
         putinC = Button(bottomFrame, text="Put chicken in boat", bg="white", fg="black")
         putinF = Button(bottomFrame, text="Put fox in boat", bg="white", fg="black")
@@ -67,13 +67,11 @@ class RiverCrossing:
         help.pack()
         quit.pack(fill=X)
         
-        def manGetIn():
-            man = w.create_oval(350, 250, 205, 210, fill="black")
-            #Hvilken side er båten på? Fuark.
         
         
 
 #Plasserer knappene
+
 root = Tk()
 rc = RiverCrossing(root)
 root.mainloop()

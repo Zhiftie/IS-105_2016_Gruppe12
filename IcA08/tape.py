@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from Tkinter import *
 '''
     This class will tell what 'state' the program is at.
 '''
@@ -56,6 +58,12 @@ class Database:
             return True
         else:
             return False
+        
+    def manGetIn():
+        man = w.create_oval(350, 250, 205, 210, fill="black")
+        w.Canvas.update_idletasks
+        #Hvilken side er båten på? Fuark.
+    
 
 
 
