@@ -6,10 +6,8 @@ from tape import *
 
 class RiverCrossing:
     def __init__(self, master):
-        self.tape = Database()
         
-
-
+        
         master.title("River Crossing")
         w = Canvas(master, width=900, height=900)
         w.pack()
@@ -41,7 +39,7 @@ class RiverCrossing:
         helpFrame.pack(side=RIGHT)
         
         
-        getIn = Button(bottomFrame, text="Get in boat", bg="white", fg="black", command= lambda: Database.manGetIn)
+        getIn = Button(bottomFrame, text="Get in boat", bg="white", fg="black")
         getOut = Button(bottomFrame, text="Get out of boat", bg="white", fg="black")
         putinC = Button(bottomFrame, text="Put chicken in boat", bg="white", fg="black")
         putinF = Button(bottomFrame, text="Put fox in boat", bg="white", fg="black")
@@ -49,7 +47,7 @@ class RiverCrossing:
         takeOutC = Button(bottomFrame, text="Take chicken out of boat", bg="white", fg="black")
         takeOutF = Button(bottomFrame, text="Take fox out of boat", bg="white", fg="black")
         takeOutG = Button(bottomFrame, text="Take grain out of boat", bg="white", fg="black")
-        crossRiver = Button(bottomFrame, text="Cross River", bg="black", fg="white", command= lambda: Database.set_boat(new_pos)) 
+        crossRiver = Button(bottomFrame, text="Cross River", bg="black", fg="white") 
                                                                                                                       
         help = Button(helpFrame, text="Help", bg="white", fg="red")
         quit = Button(helpFrame, text="Quit game", bg= "black", fg="red", command=w.quit)
