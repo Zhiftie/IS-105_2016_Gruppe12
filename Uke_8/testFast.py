@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import timeit
+import csv
 
 def makeHaystack(size): #max size: 536 870 912
     for i in xrange(0,size):
@@ -34,23 +35,28 @@ def Search_f():
 
 def testF(needleMethod):
     global needle
-    sFast = []
     needle = needleMethod()
-    while len(haystack) <= 1000000:
+    sFast = []
+    while len(haystack) <= 1000000: 
         timer = timeit.Timer(Search_f)
-        result = timer.repeat(number = 100)
-        sFast.append((len(haystack),min(result)))
-        print sFast[(len(sFast)-1)]
-        makeHaystack(100000)
-        needle = needleMethod() 
+        result = timer.repeat(repeat = 1, number = 100)        
+        sFast.append((len(haystack), min(result)))
+        makeHaystack(1000) #utvider haystack med 1000
+        needle = needleMethod() #setter needle på samme plass som tidligere i den nå utvidede listen.
     return sFast
 
 haystack = []
-makeHaystack(100000)
+makeHaystack(1000)
 needle = None
 
 fList = testF(setNeedleMiddle)
 x , y = splitL(fList)
+"""
+skriv resultatet til fil. må utbedres
+"""
+#with open('text.csv', 'w') as f:
+    #writer = csv.writer(f, delimiter='\t')  
+    #writer.writerows(zip(x,y))
 
 plt.scatter(x,y)
 plt.plot(x,y)
@@ -58,3 +64,4 @@ plt.xscale("log")
 plt.autoscale()
 plt.grid()
 plt.show()
+

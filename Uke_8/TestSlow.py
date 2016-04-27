@@ -37,12 +37,12 @@ def testS(needleMethod):
     global needle
     needle = needleMethod()
     sSlow = []
-    while len(haystack) <= 10000: #haystack resettes ikke. Fix
+    while len(haystack) <= 100000: #haystack resettes ikke. Fix
         timer = timeit.Timer(Search_s)
-        result = timer.repeat(repeat = 1, number = 1000)        
+        result = timer.repeat(repeat = 1, number = 10)        
         sSlow.append((len(haystack), min(result)))
-        makeHaystack(1000)
-        needle = needleMethod()
+        makeHaystack(1000) #utvider haystack med 1000
+        needle = needleMethod() #setter needle på samme plass som tidligere i den nå utvidede listen.
     return sSlow
 
 haystack = []
