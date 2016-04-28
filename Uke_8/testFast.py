@@ -40,12 +40,18 @@ def testF(needleMethod):
         timer = timeit.Timer(Search_f)
         result = timer.repeat(repeat = 1, number = 1)        
         sFast.append((len(haystack), min(result)))
-        for i in xrange(len(haystack),(len(haystack)*2)):
+        for i in xrange(len(haystack),(len(haystack)+100000)):#
             haystack.append(i)
-        print needle
         needle = needleMethod() #setter needle på samme plass som tidligere i den nå utvidede listen.
-        print needle
     return sFast
+"""
+skriv resultatet til fil. må utbedres
+"""
+def writetofile(name):
+    fname = name +".csv"
+    with open(fname, 'w') as f: #Sett "text.csv" til et beskrivende navn" 
+        writer = csv.writer(f, delimiter='\t')  
+        writer.writerows(zip(x,y))
 
 haystack = []
 makeHaystack(100000)
@@ -53,12 +59,7 @@ needle = None
 
 fList = testF(setNeedleStart)
 x , y = splitL(fList)
-"""
-skriv resultatet til fil. må utbedres
-"""
-#with open('text.csv', 'w') as f:
-    #writer = csv.writer(f, delimiter='\t')  
-    #writer.writerows(zip(x,y))
+writetofile(raw_input("Name file> "))
 
 plt.scatter(x,y)
 plt.plot(x,y)
