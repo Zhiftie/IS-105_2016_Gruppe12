@@ -4,13 +4,13 @@ Source GR2 - https://github.com/Cmoen11/IS-105_2016_Gruppe-2-/blob/master/uke14_
 
 # -*- coding: utf-8 -*-
 from tape import * 
-from GUI_rc import *
+
 
 class State:
     def __init__(self):
         self.tape = Tape() #Creates a tape object
-        self.root = Tk() 
-        self.rc = RiverCrossing(root) #Creates a GUI
+        #self.root = Tk() 
+        #self.rc = RiverCrossing(root) #Creates a GUI
     
     
     def check_lose_combo(self):
