@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from Tkinter import *
 from tape import *
-from state import State
+from state import *
 
 
+#ToDo: Add items to crossRiver() + create functions to putin/takeout items: chicken, fox, grain.
 
 class RiverCrossing:
     def __init__(self, master):
@@ -11,6 +12,7 @@ class RiverCrossing:
         self.state = State()
         
         master.title("River Crossing")
+        global w
         w = Canvas(master, width=900, height=900)
         w.pack()
         
@@ -54,7 +56,16 @@ class RiverCrossing:
             elif self.state.tape.man in 'boat' and self.state.tape.boat in 'right':
                 w.coords(man, 850, 250, 760, 210)
                 self.state.tape.set_man('right')
+            
         
+        def putXc():
+            if self.state.tape.chicken in "left" or self.state.tape.chicken in "rigt":
+                if self.state.tape.boat in "left":
+                    w.coords(chicken, 220, 220, 250, 280) #chicken in boat at left
+                    self.state.tape.set_chicken("boat")
+                elif self.state.tape.boat in "right":
+                    w.coords(chicken, 550, 225, 700, 200) #chicken in boat at right
+                    self.state.tape.set_chicken("boat")
         
         
         def crossRiver():
@@ -68,13 +79,22 @@ class RiverCrossing:
                     w.coords(boat, 400, 300, 201, 200)
                     w.coords(man, 350, 250, 205, 210)
                     self.state.tape.set_boat('left')
+                #isItDead(self) Not working. 
                 
                 
+        #def isItDead(self):
+            #if self.state.check_lose_combo(): #Does it work? 
+                #master.title("Game over")
+                #w = w.delete(ALL) #Removes all items. 
+                #w = Label(master, text="R.I.P M8.")
+                #w.pack()
+            
                 
+            
                 
         
         getIn = Button(bottomFrame, text="Get in or out of the boat", bg="white", fg="black", command=manGetX)
-        putinC = Button(bottomFrame, text="Put chicken in boat", bg="white", fg="black")
+        putinC = Button(bottomFrame, text="Put chicken in boat", bg="white", fg="black", command=putXc)
         putinF = Button(bottomFrame, text="Put fox in boat", bg="white", fg="black")
         putinG = Button(bottomFrame, text="Put grain in boat", bg="white", fg="black")
         takeOutC = Button(bottomFrame, text="Take chicken out of boat", bg="white", fg="black")
