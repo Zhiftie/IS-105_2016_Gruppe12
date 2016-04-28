@@ -13,8 +13,7 @@ def setNeedleStart():
     return start
 
 def setNeedleMiddle():
-    middle = (len(haystack)/2)
-    return haystack[middle]
+    return haystack[(len(haystack)//2)] # Lager problemer når needle > 100k
 
 def setNeedleEnd():
     end = (len(haystack)-1)
@@ -37,19 +36,22 @@ def testF(needleMethod):
     global needle
     needle = needleMethod()
     sFast = []
-    while len(haystack) <= 1000000: 
+    while len(haystack) <= 10000000: 
         timer = timeit.Timer(Search_f)
-        result = timer.repeat(repeat = 1, number = 100)        
+        result = timer.repeat(repeat = 1, number = 1)        
         sFast.append((len(haystack), min(result)))
-        makeHaystack(1000) #utvider haystack med 1000
+        for i in xrange(len(haystack),(len(haystack)*2)):
+            haystack.append(i)
+        print needle
         needle = needleMethod() #setter needle på samme plass som tidligere i den nå utvidede listen.
+        print needle
     return sFast
 
 haystack = []
-makeHaystack(1000)
+makeHaystack(100000)
 needle = None
 
-fList = testF(setNeedleMiddle)
+fList = testF(setNeedleStart)
 x , y = splitL(fList)
 """
 skriv resultatet til fil. må utbedres
