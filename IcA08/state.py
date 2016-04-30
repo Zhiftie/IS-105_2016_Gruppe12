@@ -14,8 +14,8 @@ class State:
     
     
     def check_lose_combo(self):
-        if ("self.tape in self.tape.fox") and ("self.tape.man not in self.tape.chicken") or \
-           ("self.tape.chicken in self.tape.corn") and ("self.tape.man not in self.tape.chicken"):
+        if (self.tape.chicken in self.tape.fox) and (self.tape.man not in self.tape.chicken) or \
+           (self.tape.chicken in self.tape.grain) and (self.tape.man not in self.tape.chicken):
             return True #R.I.P.
         return False #Carry on
     
@@ -39,8 +39,8 @@ class State:
         if self.tape.man in "left":
             if self.items_on_boat() is self.tape.chicken:
                 self.man_left_item_boat(self.tape.chicken)
-            elif self.items_on_boat() is self.tape.corn:
-                self.man_left_item_boat(self.tape.corn)
+            elif self.items_on_boat() is self.tape.grain:
+                self.man_left_item_boat(self.tape.grain)
             elif self.items_on_boat() is self.tape.fox:
                 self.man_left_item_boat(self.tape.fox)
             else:
@@ -49,8 +49,8 @@ class State:
         if self.tape.man in 'right':
             if self.items_on_boat() is self.tape.chicken:
                 self.man_right_item_boat(self.tape.chicken)
-            elif self.items_on_boat() is self.tape.corn:
-                self.man_right_item_boat(self.tape.corn)
+            elif self.items_on_boat() is self.tape.grain:
+                self.man_right_item_boat(self.tape.grain)
             elif self.items_on_boat() is self.tape.fox:
                 self.man_right_item_boat(self.tape.fox)
             else:
@@ -61,12 +61,12 @@ class State:
             :return: the variable of the item,
             with this veriable we can use 'is' to check witch variable it is.
             '''
-            if 'boat' in (self.tape.chicken, self.tape.fox, self.tape.corn):
+            if 'boat' in (self.tape.chicken, self.tape.fox, self.tape.grain):
                 if 'boat' in self.tape.chicken:
                     return self.tape.chicken
         
-                elif 'boat' in self.tape.corn:
-                    return self.tape.corn
+                elif 'boat' in self.tape.grain:
+                    return self.tape.grain
         
                 elif 'boat' in self.tape.fox:
                     return self.tape.fox
@@ -92,7 +92,7 @@ class State:
         if take_out_boat == 1:
             self.tape.set_chicken('left')
         elif take_out_boat == 2:
-            self.tape.set_corn('left')
+            self.tape.set_grain('left')
         elif take_out_boat == 3:
             self.tape.set_fox('left')
         elif take_out_boat == 4:
@@ -111,7 +111,7 @@ class State:
         if take_out_boat == 1:
             self.tape.set_chicken('right')
         elif take_out_boat == 2:
-            self.tape.set_corn('right')
+            self.tape.set_grain('right')
         elif take_out_boat == 3:
             self.tape.set_fox('right')
         elif take_out_boat == 4:
@@ -126,8 +126,8 @@ class State:
             answer = raw_input("Do you want to take the chicken out of the boat? Y/N : ")
             answer = self.redefine_answer(answer)
             if answer: take_out_boat = 1
-        elif item is self.tape.corn:
-            answer = raw_input("Do you want to take the corn out of the boat? Y/N : ")
+        elif item is self.tape.grain:
+            answer = raw_input("Do you want to take the grain out of the boat? Y/N : ")
             answer = self.redefine_answer(answer)
             if answer: take_out_boat = 2
         elif item is self.tape.fox:
@@ -150,17 +150,17 @@ class State:
             '''
         if self.items_on_boat() != None: return None
         if self.tape.man in self.tape.chicken \
-           and self.tape.man in self.tape.corn \
+           and self.tape.man in self.tape.grain \
            and self.tape.man in self.tape.fox:
             answer = raw_input("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2."
-                               "Put corn inside the boat, type 3. Put fox inside the boat type 4: ")
+                               "Put grain inside the boat, type 3. Put fox inside the boat type 4: ")
     
             if answer == '1':
                 self.tape.set_man('boat')
             elif answer == '2':
                 self.tape.set_chicken('boat')
             elif answer == '3':
-                self.tape.set_corn('boat')
+                self.tape.set_grain('boat')
             elif answer == '4':
                 self.tape.set_fox('boat')
             else:
@@ -168,31 +168,31 @@ class State:
             return True
     
         elif self.tape.man in self.tape.chicken \
-             and self.tape.man in self.tape.corn:
+             and self.tape.man in self.tape.grain:
             answer = raw_input("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2."
-                               "Put corn inside the boat, type 3.")
+                               "Put grain inside the boat, type 3.")
     
             if answer == '1':
                 self.tape.set_man('boat')
             elif answer == '2':
                 self.tape.set_chicken('boat')
             elif answer == '3':
-                self.tape.set_corn('boat')
+                self.tape.set_grain('boat')
             else:
                 pass
             return True
     
     
         elif self.tape.man in self.tape.fox \
-             and self.tape.man in self.tape.corn:
+             and self.tape.man in self.tape.grain:
             answer = raw_input("Choose one: Go inside the boat type 1. Put fox inside the boat type 2."
-                               "Put corn inside the boat, type 3.")
+                               "Put grain inside the boat, type 3.")
             if answer == '1':
                 self.tape.set_man('boat')
             elif answer == '2':
                 self.tape.set_fox('boat')
             elif answer == '3':
-                self.tape.set_corn('boat')
+                self.tape.set_grain('boat')
             else:
                 pass
             return True
@@ -231,12 +231,12 @@ class State:
                 pass
             return True
     
-        elif self.tape.man in self.tape.corn:
-            answer = raw_input("Choose one: Go inside the boat type 1. Put corn inside the boat type 2.")
+        elif self.tape.man in self.tape.grain:
+            answer = raw_input("Choose one: Go inside the boat type 1. Put grain inside the boat type 2.")
             if answer == '1':
                 self.tape.set_man('boat')
             elif answer == '2':
-                self.tape.set_corn('boat')
+                self.tape.set_grain('boat')
             else:
                 pass
             return True  
