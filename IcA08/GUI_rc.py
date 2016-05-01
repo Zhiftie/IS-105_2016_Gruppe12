@@ -87,8 +87,7 @@ class RiverCrossing:
                     self.state.tape.set_chicken('boat') #chicken in boat at left
                 elif self.state.tape.chicken in 'right':
                     w.coords(chicken, 550, 225, 700, 200)
-                    self.state.tape.set_chicken('boat') #chicken at right
-                    
+                    self.state.tape.set_chicken('boat') #chicken at right            
                     
         def takeOutC():
             if self.state.tape.chicken in 'boat' and self.state.tape.boat in 'left':
@@ -98,23 +97,69 @@ class RiverCrossing:
                 w.coords(chicken, 850, 400, 800, 350)
                 self.state.tape.set_chicken('right') #moves chicken to right land
                 
-                    
+        
                     
                 
+        def putInF():
+            while (self.state.tape.grain in 'boat' \
+                    or self.state.tape.chicken in 'boat' \
+                    or self.state.tape.man in 'boat'):
+                return None
+            if self.state.tape.boat in 'left' or self.state.tape.boat in 'right':
+                if self.state.tape.fox in 'left':
+                    w.coords(fox, 213, 222, 250, 280)
+                    self.state.tape.set_fox('boat') # fox in boat at left
+                elif self.state.tape.fox in 'right':
+                    w.coords(fox, 550, 250, 700, 220)
+                    self.state.tape.set_fox('boat') #fox in boat at right
+                    
+        def takeOutF():
+            if self.state.tape.fox in 'boat' and self.tape.boat in 'left':
+                w.coords(fox, 100, 130, 180, 150)
+                self.state.tape.set_fox('left') #sets fox back at left land
+                
+            elif self.state.tape.fox in 'boat' and self.state.tape.boat in 'right':
+                w.coords(fox, 850, 400, 800, 350)
+                self.state.tape.set_fox('right') #sets fox to right land
+                #bugged - will set fox back to start position(left land)
+                
+                
+                
+        
+        def putInG():
+            while (self.state.tape.fox in 'boat' \
+                    or self.state.tape.chicken in 'boat' \
+                    or self.state.tape.man in 'boat'):
+                return None
+            if self.state.tape.boat in 'left' or self.state.tape.boat in 'right':
+                if self.state.tape.grain in 'left':
+                    w.coords(grain, 213, 222, 250, 280)
+                    self.state.tape.set_grain('boat') #grain in boat at left
+                elif self.state.tape.grain in 'right':
+                    w.coords(grain, 550, 250, 700, 220) 
+                    self.state.tape.set_grain('boat') #grain in boat at right
+            
+        def takeOutG():
+            if self.state.tape.grain in 'boat' and self.state.tape.boat in 'left':
+                w.coords(grain, 130, 180, 160, 170)
+                self.state.tape.set_grain('left') #Grain at left land
+            elif self.state.tape.grain in 'boat' and self.state.tape.boat in 'right':
+                w.coords(grain, 850, 400, 800, 350)
+                self.state.tape.set_grain('right') #grain at right land
                 
                 
             
+                
+                
+            
+        
+            
+                    
+                    
+                  
+                      
                
               
-                    #w.coords(chicken, 220, 220, 250, 280) #chicken in boat at left
-                    
-            
-                    #w.coords(chicken, 550, 225, 700, 200) #chicken in boat at right
-            
-               
-                    #w.coords(chicken, 150, 180, 180, 200)
-             
-                    #w.coords(chicken, 850, 400, 800, 350) #right land
                     
         
         def crossRiver():
@@ -125,6 +170,11 @@ class RiverCrossing:
                     self.state.tape.set_boat('right')
                     if self.state.tape.chicken in 'boat':
                         w.coords(chicken, 550, 225, 700, 200)
+                    elif self.state.tape.fox in 'boat':
+                        w.coords(fox, 550, 250, 700, 220)
+                    elif self.state.tape.grain in 'boat':
+                        w.coords(grain, 550, 250, 700, 220)
+                        
                         
                     
                 elif self.state.tape.boat in 'right':
@@ -133,6 +183,11 @@ class RiverCrossing:
                     self.state.tape.set_boat('left')
                     if self.state.tape.chicken in 'boat':
                         w.coords(chicken, 220, 220, 250, 280)
+                    elif self.state.tape.fox in 'boat':
+                        w.coords(fox, 213, 222, 250, 280)
+                    elif self.state.tape.grain in 'boat':
+                        w.coords(grain, 213, 222, 250, 280)
+
                     
             #isItDead(self) 
                 
@@ -141,27 +196,28 @@ class RiverCrossing:
             
                 
             
-                
+        #PIx = Put in x 
+        #TOx = Take out x
         
         getIn = Button(bottomFrame, text="Get in or out of the boat", bg="white", fg="black", command=manGetX)
-        putinC = Button(bottomFrame, text="Put chicken in boat", bg="white", fg="black", command=putInc)
-        putinF = Button(bottomFrame, text="Put fox in boat", bg="white", fg="black")
-        putinG = Button(bottomFrame, text="Put grain in boat", bg="white", fg="black")
-        takeOutC = Button(bottomFrame, text="Take chicken out of boat", bg="white", fg="black",command=takeOutC)
-        takeOutF = Button(bottomFrame, text="Take fox out of boat", bg="white", fg="black")
-        takeOutG = Button(bottomFrame, text="Take grain out of boat", bg="white", fg="black")
+        PIC = Button(bottomFrame, text="Put chicken in boat", bg="white", fg="black", command=putInc)
+        PIF = Button(bottomFrame, text="Put fox in boat", bg="white", fg="black", command=putInF)
+        PIG = Button(bottomFrame, text="Put grain in boat", bg="white", fg="black", command=putInG)
+        TOC = Button(bottomFrame, text="Take chicken out of boat", bg="white", fg="black",command=takeOutC)
+        TOF = Button(bottomFrame, text="Take fox out of boat", bg="white", fg="black", command=takeOutF)
+        TOG = Button(bottomFrame, text="Take grain out of boat", bg="white", fg="black", command=takeOutG)
         crossRiver = Button(bottomFrame, text="Cross River", bg="black", fg="white", command=crossRiver) 
                                                                                                                       
         help = Button(helpFrame, text="Help", bg="white", fg="red")
         quit = Button(helpFrame, text="Quit game", bg= "black", fg="red", command=w.quit)
         
         getIn.grid(row=0) 
-        putinC.grid(row=0, column=2)
-        putinF.grid(row=0, column=4)
-        putinG.grid(row=0, column=5)
-        takeOutC.grid(row=1)
-        takeOutF.grid(row=1, column=2)
-        takeOutG.grid(row=1, column=5)
+        PIC.grid(row=0, column=2)
+        PIF.grid(row=0, column=4)
+        PIG.grid(row=0, column=5)
+        TOC.grid(row=1)
+        TOF.grid(row=1, column=2)
+        TOG.grid(row=1, column=5)
         crossRiver.grid(row=2, column=2)
         
         help.pack(fill=X)

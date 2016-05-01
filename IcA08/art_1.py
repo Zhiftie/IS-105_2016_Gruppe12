@@ -128,8 +128,7 @@ def tilstand_7():
     w.create_oval(850, 400, 800, 350, fill="yellow") # Chicken on the right side.
     w.create_oval(860, 450, 900, 350, fill="white") # Grain on the right side.
     w.create_oval(550, 300, 750, 250, fill="black") # Man in the boat on the right side.
-    w.create_oval(550, 250, 700, 220, fill="orange") # Fox on the right side.
-
+    w.create_oval(550, 250, 700, 220, fill="orange") #Fox Right side boat?
     mainloop()
 
 def tilstand_8():
@@ -146,7 +145,7 @@ def tilstand_8():
     w.create_oval(850, 400, 800, 350, fill="yellow") # Chicken on the right side.
     w.create_oval(860, 450, 900, 350, fill="white") # Grain on the right side.
     w.create_oval(550, 300, 750, 250, fill="black") # Man in the boat on the right side.
-    w.create_oval(900, 300, 850, 330, fill="orange") # Fox on the right side.
+    w.create_oval(900, 300, 850, 330, fill="orange") # fox right side
 
     mainloop()
     
