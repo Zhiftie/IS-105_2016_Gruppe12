@@ -1,31 +1,33 @@
-from random import shuffle
+import numpy as np
+import matplotlib.pyplot as plt
+import timeit
 
-ln = 100# length of list used in shufflelist function
-haystack = []
-var1 = 2
-var2 = 9
-needle = len(haystack)/2
-needleFound = False
-def make2dlist():
-    list1 = np.arange(100).reshape(2,50)
-def shufflelist():
-    for i in range(0,ln):
-        haystack.append(i)
-    shuffle(haystack)
-    return haystack
+def makeHaystack(listname,size): #max size: 536 870 912
+    listname = []
+    for i in xrange(0,size):
+        listname.append(i)
+    return listname
 
-"""
-Iterates over a list looking for an item with the x value, once its found it returns the index number
-"""
-def findNeedle(needle):
-    for i in[i for i, v in enumerate(haystack) if v == needle ]:
-        return i
-    
+def setNeedleStart():
+    start = haystack[100]
+    return start
+
+def setNeedleMiddle():
+    middle = (len(haystack)/2)
+    return haystack[middle]
+
+def setNeedleEnd():
+    end = (len(haystack)-1)
+    return haystack[end]
+
+def splitL(lS):
+    x_val, y_val = zip(*lS)
+    return x_val, y_val
+
 def search_fast(haystack, needle):
     for item in haystack:
         if item == needle:
             return True
-    shuffle(haystack)
     return False
 
 def search_slow(haystack, needle):
@@ -33,15 +35,7 @@ def search_slow(haystack, needle):
     for item in haystack:
         if item == needle:
             return_value = True
-    shuffle(haystack)
     return return_value
-
-haystack = shufflelist()
-needleI = findNeedle(needle)
-
-print "needle=",haystack[needleI],",found at index number",needleI
-
-
 
 def Search_s():
     return search_slow(haystack, needle)
@@ -49,18 +43,40 @@ def Search_s():
 def Search_f():
     return search_fast(haystack, needle)
    
+def testS(needleMethod):
+    global needle
+    needle = needleMethod()
+    sSlow = []
+    while len(haystack) <= 10000000: 
+        timer = timeit.Timer(Search_s)
+        result = timer.repeat(repeat = 1, number = 100)        
+        sSlow.append((len(haystack), min(result)))
+        makeHaystack(1000000)
+        needle = needleMethod()
+    return sSlow
+
+def testF(needleMethod):
+    global needle
+    sFast = []
+    needle = needleMethod()
+    while len(haystack) <= 10000000:
+        timer = timeit.Timer(Search_f)
+        result = timer.repeat(repeat = 1, number = 100)
+        sFast.append((len(haystack),min(result)))
+        makeHaystack(1000000)
+        needle = needleMethod() #
+    return sFast
+haystack = []
+makeHaystack(1000000)
+needle = None
+
+fList = testF(setNeedleStart)
+needle = None
+x , y = splitL(fList)
+
+
+
+
+        
+        
     
-if __name__ == "__main__":
-    """
-    timeit test for the search slow function
-    """
-    import timeit
-    timer = timeit.Timer(Search_s)
-    result = timer.repeat(repeat = 100, number = 10)
-    print ("{:8.6f}".format(min(result)))
-    timer = timeit.Timer(Search_f)
-    result = timer.repeat(repeat = 100, number = 10)
-    print ("{:8.6f}".format(min(result)))
-#if __name__ == '__main__':
-    #import timeit
-    #print(timeit.timeit("findNeedle(needle)", setup="from__main__ import findNeedle, needle"))
