@@ -36,7 +36,7 @@ def testF(needleMethod):
     global needle
     needle = needleMethod()
     sFast = []
-    while len(haystack) <= 10000000: 
+    while len(haystack) <= 100000: 
         timer = timeit.Timer(Search_f)
         result = timer.repeat(repeat = 1, number = 1)        
         sFast.append((len(haystack), min(result)))
@@ -48,7 +48,7 @@ def testF(needleMethod):
     return sFast
 
 haystack = []
-makeHaystack(100000)
+makeHaystack(1000)
 needle = None
 
 fList = testF(setNeedleStart)
@@ -56,14 +56,14 @@ x , y = splitL(fList)
 """
 skriv resultatet til fil. må utbedres
 """
-#with open('text.csv', 'w') as f:
-    #writer = csv.writer(f, delimiter='\t')  
-    #writer.writerows(zip(x,y))
+with open('text.csv', 'w') as f:
+    writer = csv.writer(f, delimiter = ",")  
+    writer.writerows(zip(x,y))
 
-plt.scatter(x,y)
-plt.plot(x,y)
-plt.xscale("log")
-plt.autoscale()
-plt.grid()
-plt.show()
+#plt.scatter(x,y)
+#plt.plot(x,y)
+#plt.xscale("log")
+#plt.autoscale()
+#plt.grid()
+#plt.show()
 
