@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+"""
+Source: http://technoslab.blogspot.no/2014/08/write-python-program-for-creating.html
+This class implements the methods the Filesystem will use. 
+"""
 import time
 
 class File(object):
@@ -42,7 +46,7 @@ class File(object):
             
     def rename(self, name):
         self.name = name
-
+    
     def copy(self, src, dest):
         src = self.get(src)
         self.add(dest, src.type, src.text)
