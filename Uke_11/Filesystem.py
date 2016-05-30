@@ -122,7 +122,10 @@ class FileSystem(object):
 
     def exit(self, cmd):
         sys.exit(0)
-
+"""
+Instanciate a FileSystem, that accepts commands. 
+Catches invalid commands and prints instructions for user.
+"""
 def main():
     fs = FileSystem()
     while True:
@@ -134,7 +137,7 @@ def main():
             print 'Invalid command. Type "help".'
         if method is not None and cmd[0] in FileSystem.COMMANDS and callable(method):
             method(cmd)
-            fs.save()
+            #fs.save()
         else:
             print 'Invalid command. Type "help".'
 main()
