@@ -49,9 +49,6 @@ class River(SM):
         else: 
             print "The man is already in the boat."
             
-            
-        
-    
         
     def takeOut(self, item):
         if item in d.boat:
@@ -62,12 +59,28 @@ class River(SM):
                 d.rightB.append(item)
                 d.boat.remove(item)
                 
-    # Osv., - definer alle kommandoen som virker på "verden" her ...
-    def crossRiver(self):
-        if boatLeft is True:
-            boatLeft = False
-        else:
-            boatLeft = True
+    """
+    * Skal sjekke hva slags items som er i båten, og hvor båten er. Sjekker også man mannen er i båten. 
+    * Her ser vi at siden vi (dessverre) har valgt å ikke bruke manipulerbare felt blir det vanskelig å implementere en funksjonell metode som kan ta items som parameter og bruke de.
+    """
+    def crossRiver(self, item):
+        if boatLeft is True and "Man" in d.boat:
+            boatLeft = False # Sets boat to right with man in boat.
+        
+        elif boatLeft is False and "Man" in d.boat:
+            boatLeft = True # Sets boat to left with man in boat.
+        
+        
+        elif boatLeft is True and "Man" in d.boat:
+            if item in d.boat: 
+                boatLeft = False #Sets boat to right with man and item x in boat.
+        elif boatLeft is False and "Man" in d.boat:
+            if item in d.boat:
+                boatLeft is True #Sets boat to left with man and item x in boat. 
+        
+        
+                
+          
     
     
         
@@ -109,17 +122,17 @@ class River(SM):
     def remove(self, item):
         self.river_db.remove(item) # typisk MISHAP, hvis item ikke finnes i listen river_db
     
-    #def checkState(self):
+    
         
 # Test cases 
 r = River([['boat isat left'],['chicken isat left'],['fox isat left'],['man isat left'], ['grain isat left']])
 r.start()
 r.database() # Data representasjon av verden til enhver tid
 r.view()
-r.crossRiver() # Dette skulle ikke være mulig, men foreløpig ingen "constraints" er definert!
+r.crossRiver()
 r.database()
 r.view()
-r.crossriver() # Dette skal ikke kunne gå heller ...
+r.crossriver() 
 r.view()
 
         
