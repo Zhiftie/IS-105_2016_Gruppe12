@@ -13,7 +13,7 @@ def setNeedleStart():
     return start
 
 def setNeedleMiddle():
-    return haystack[(len(haystack)//2)] # Lager problemer når needle > 100k
+    return haystack[(len(haystack)//2)] 
 
 def setNeedleEnd():
     end = (len(haystack)-1)
@@ -36,34 +36,25 @@ def testF(needleMethod):
     global needle
     needle = needleMethod()
     sFast = []
-    while len(haystack) <= 100000: 
+    while len(haystack) <= 10000000: #max size of haystack
         timer = timeit.Timer(Search_f)
-        result = timer.repeat(repeat = 1, number = 1)        
+        result = timer.repeat(repeat = 1, number = 10)        
         sFast.append((len(haystack), min(result)))
-        for i in xrange(len(haystack),(len(haystack)*2)):
+        for i in xrange(len(haystack),(len(haystack)*2)): 
             haystack.append(i)
-        print needle
-        needle = needleMethod() #setter needle på samme plass som tidligere i den nå utvidede listen.
-        print needle
+        needle = needleMethod() #moves needle to the same relative position in the extended haystack
     return sFast
 
+def createFile(filename): 
+    with open(filename,'w') as f:
+        writer = csv.writer(f, delimiter = ",")  
+        writer.writerows(zip(x,y))
+
+
 haystack = []
-makeHaystack(1000)
+makeHaystack(100000) # initial size of haystack
 needle = None
 
-fList = testF(setNeedleStart)
+fList = testF(setNeedleEnd)# where to put the needle. 
 x , y = splitL(fList)
-"""
-skriv resultatet til fil. må utbedres
-"""
-with open('text.csv', 'w') as f:
-    writer = csv.writer(f, delimiter = ",")  
-    writer.writerows(zip(x,y))
-
-#plt.scatter(x,y)
-#plt.plot(x,y)
-#plt.xscale("log")
-#plt.autoscale()
-#plt.grid()
-#plt.show()
-
+createFile('filename.csv') # descriptive name of the created file

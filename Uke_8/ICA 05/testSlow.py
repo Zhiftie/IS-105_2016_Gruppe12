@@ -37,25 +37,25 @@ def testS(needleMethod):
     global needle
     needle = needleMethod()
     sSlow = []
-    while len(haystack) <= 10000000:
+    while len(haystack) <= 10000000: #max size of haystack
         timer = timeit.Timer(Search_s)
-        result = timer.repeat(repeat = 1, number = 1)        
+        result = timer.repeat(repeat = 1, number = 100)        
         sSlow.append((len(haystack), min(result)))
-        for i in xrange(len(haystack),(len(haystack)*2)): #dobbler størrelsen på liste
+        for i in xrange(len(haystack),(len(haystack)*2)):
             haystack.append(i) 
-        needle = needleMethod() #setter needle på samme plass som tidligere i den nå utvidede listen.
+        needle = needleMethod() #move needle to the same relative position in the extended haystack
     return sSlow
 
+def createFile(filename):
+    with open(filename,'w') as f:
+        writer = csv.writer(f, delimiter = ",")  
+        writer.writerows(zip(x,y))
+
 haystack = []
-makeHaystack(100000)
+makeHaystack(100000) # initial size of haystack
 needle = None
 
-sList = testS(setNeedleMiddle)
+sList = testS(setNeedleMiddle) #where to put the needle
 x , y = splitL(sList)
+createFile("filename.csv")
 
-plt.scatter(x,y)
-plt.plot(x,y)
-plt.xscale("log")
-plt.autoscale()
-plt.grid()
-plt.show()
