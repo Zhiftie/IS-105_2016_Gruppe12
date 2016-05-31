@@ -1,13 +1,14 @@
+import csv
 import numpy as np
 import matplotlib.pyplot as plt
 
-with open("test.txt") as f:
+with open("text.csv") as f:
     data = f.read()
 
 data = data.split('\n')
 
-x = [row.split(' ')[0] for row in data]
-y = [row.split(' ')[1] for row in data]
+x = [row.split('\t')[0] for row in data]
+y = [row.split('\t')[1] for row in data]
 print x
 print y
 
