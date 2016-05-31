@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class SM:
     def start(self):
         self.state = self.startState

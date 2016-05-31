@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 class Database():
     """
-    Vi valgte å bruke lister for båten og hver side av elva, samt en boolean verdi for båtens posisjon
+    Vi valgte Ã¥ bruke lister for bÃ¥ten og hver side av elva, samt en boolean verdi for bÃ¥tens posisjon
     """
     
     leftB = ["Fox", "Chicken", "Grain", "Man"]
@@ -11,7 +12,7 @@ class Database():
     def __init__(self):
             pass
     """
-    Hensikten her var å gjøre om tilstandene i de forskjellige listene og gjøre de om til en string, som igjen kan brukes til å
+    Hensikten her var Ã¥ gjÃ¸re om tilstandene i de forskjellige listene og gjÃ¸re de om til en string, som igjen kan brukes til Ã¥
     bestemme hvilken tilstand som skal vises i view. ble ikke helt ferdig
     """    
     def convList(self): #Combines all the lists from the class, creating a snapshot of the current state
