@@ -12,7 +12,7 @@ class State:
         #self.root = Tk() 
         #self.rc = RiverCrossing(root) #Creates a GUI
     
-    
+    # Conditions for losing.     
     def check_lose_combo(self):
         if (self.tape.chicken in self.tape.fox) and (self.tape.man not in self.tape.chicken) or \
            (self.tape.chicken in self.tape.grain) and (self.tape.man not in self.tape.chicken):
