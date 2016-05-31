@@ -10,7 +10,7 @@ from tape import *
 from state import *
 
 
-#ToDo: Add items to crossRiver() + create functions to putin/takeout items: chicken, fox, grain.
+
 
 class RiverCrossing:
     def __init__(self, master):
@@ -47,6 +47,10 @@ class RiverCrossing:
         helpFrame = Frame(master)
         helpFrame.pack(side=RIGHT)
         
+        
+        """
+        Forsøk på å implementere "conditions" for hva som utløser game over.
+        """
         #def isItDead(self):
             #while (self.state.check_lose_combo()):  
                 #master.title("Game over")
