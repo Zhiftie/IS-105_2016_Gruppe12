@@ -29,7 +29,7 @@ def view(self):
     chickenManOnRight  = "** [fox grain ---\\ _________________\\_ _/ /--- chicken, man]"
     foxManOnRight  = "** [chicken grain ---\\ _________________\\_ _/ /--- fox man]"
     grainManOnRight  = "** chicken fox ---\\ _________________\\_ _/ /--- grain man"
-    # H�yre side
+    # Right side
     allAtRight      = "** [---\\ _________________\\_ _/ /--- chicken fox grain man]"
     foxInBoatRight  = "** [---\\ _________________\\_ fox _/ /--- chicken grain man]"
     grainInBoatRight  = "** [---\\ _________________\\_ grain _/ /--- chicken fox man]"
@@ -67,47 +67,47 @@ def view(self):
         #print allAtLeft
     #elif ['boat isat right'] in self.river_db:
         #print onlyBoatAtRight
-    elif ['fox isin boat at left'] in self.river_db:
-        print foxInBoatAtLeft
-    elif ['grain isin boat at left'] in self.river_db:
-        print grainInBoatLeft
-    elif ['main isin boat at left'] in self.river_db:
-        print manInBoatLeft
-    elif ['chicken isin boat at left'] in self.river_db:
-        print chickenInBoatLeft
-    elif ['fox and man isin boat at left'] in self.river_db:
-        print foxManInBoatLeft
-    elif ['grain and man isin boat at left'] in self.river_db:
-        print grainManInBoatLeft
-    elif ['chicken and man isin boat at left'] in self.river_db:
-        print chickenManInBoatLeft
-    elif ['fox and grain isin boat at left'] in self.river_db:
-        print foxGrainInBoatLeft
-    elif ['fox and chicken isin boat at left'] in self.river_db:
-        print foxChickenInBoatLeft
-    elif ['grain and chicken isin boat at left'] in self.river_db: 
-        print grainChickenInBoatLeft
-    elif ['man takeout chicken at right'] in self.river_db:
-        print manLoadOutChickenRight
-    elif ['fox and boat at right'] in self.river_db:
-        print foxOnRightWithBoat
-    elif ['grain and boat at right'] in self.river_db:
-        print grainOnRightWithBoat
-    elif ['man and boat at right'] in self.river_db:
-        print manOnRightWithBoat
-    elif ['chicken and boat at rigt'] in self.river_db:
-        print chickenOnRightWithBoat
-    elif ['fox at right'] in self.river_db:
-        print foxOnRight
-    elif ['grain at right'] in self.river_db:
-        print grainOnRight
-    elif ['man at right'] in self.river_db:
-        print manOnRight
-    elif ['chicken at right'] in self.river_db:
-        print chickenOnRight
-    elif ['chicken and man at right'] in self.river_db:
-        print chickenManOnRight
+elif ['fox isin boat at left'] in self.river_db:
+    print foxInBoatAtLeft
+elif ['grain isin boat at left'] in self.river_db:
+    print grainInBoatLeft
+elif ['main isin boat at left'] in self.river_db:
+    print manInBoatLeft
+elif ['chicken isin boat at left'] in self.river_db:
+    print chickenInBoatLeft
+elif ['fox and man isin boat at left'] in self.river_db:
+    print foxManInBoatLeft
+elif ['grain and man isin boat at left'] in self.river_db:
+    print grainManInBoatLeft
+elif ['chicken and man isin boat at left'] in self.river_db:
+    print chickenManInBoatLeft
+elif ['fox and grain isin boat at left'] in self.river_db:
+    print foxGrainInBoatLeft
+elif ['fox and chicken isin boat at left'] in self.river_db:
+    print foxChickenInBoatLeft
+elif ['grain and chicken isin boat at left'] in self.river_db: 
+    print grainChickenInBoatLeft
+elif ['man takeout chicken at right'] in self.river_db:
+    print manLoadOutChickenRight
+elif ['fox and boat at right'] in self.river_db:
+    print foxOnRightWithBoat
+elif ['grain and boat at right'] in self.river_db:
+    print grainOnRightWithBoat
+elif ['man and boat at right'] in self.river_db:
+    print manOnRightWithBoat
+elif ['chicken and boat at rigt'] in self.river_db:
+    print chickenOnRightWithBoat
+elif ['fox at right'] in self.river_db:
+    print foxOnRight
+elif ['grain at right'] in self.river_db:
+    print grainOnRight
+elif ['man at right'] in self.river_db:
+    print manOnRight
+elif ['chicken at right'] in self.river_db:
+    print chickenOnRight
+elif ['chicken and man at right'] in self.river_db:
+    print chickenManOnRight
     
         
-    else:
-        print ";;; MISHAP - SOMETHING WENT WRONG!"
+else:
+    print ";;; MISHAP - SOMETHING WENT WRONG!"
