@@ -13,11 +13,10 @@ def code():
     table[7] = ' '
     return table
 table = code()
-def rev_table():
+def rev_table(decodeTable):
     """
     Bytter om keys og values i table og legger resultatet inn i en ny dictionary
     """
-    rev_table = {v : k for k, v in table.items()}
+    rev_table = {v : k for k, v in decodeTable.items()}
     return rev_table
-inv_table= rev_table()
-print inv_table
+
