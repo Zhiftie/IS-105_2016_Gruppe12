@@ -50,4 +50,6 @@ def test():
     print(lol)
     pass
 
-test()
+print decode("sourcecode.txt", n)
+
+

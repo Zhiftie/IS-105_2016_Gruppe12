@@ -1,4 +1,5 @@
 #  -*- coding: utf-8-*-
+from code_flip import rev_table as rt
 
 def code():
     """
@@ -155,17 +156,19 @@ def encode(message):
     for k,v in table.iteritems():
         if v == string:
             code_for_string.append(k)
-    print table
     return code_for_string
 
 
 def test():
     test_message = "hahdsahdahdhadhdshdhahdahdhadhadhdhadh hasdas  hdshdash dahsdhas dhasdhahdas hdashdas dashdhas dhashdas hashd hasdhasd hasdhas djasdasjd ajasjdjas djadas dasdas dkasdlk dslfsd fdffd l"
-    print encode(test_message)
-test()
+    return encode(test_message)
+encodedMessage = test()
+def decode(message):
+    pass
+decodeTaoble = rt(table)
 
 
-if __name__ == '__main__':
-    unittest.main()
+#if __name__ == '__main__':
+    #unittest.main()
 
         
