@@ -21,7 +21,5 @@ def makeDict(string):
                 it += 1   
     return stringDict
             
-            
-        
-makeDict(testString)
+
 print makeDict(testString)

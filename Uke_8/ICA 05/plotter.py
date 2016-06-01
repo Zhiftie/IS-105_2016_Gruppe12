@@ -16,11 +16,14 @@ def getCoordinates(filename):
         
     return xInt, yFloat
 
-listSize , time = getCoordinates("filename.csv") # specify name of file to get plot points
+#listSize , time = getCoordinates("filename.csv") # specify name of file to get plot points
+def plotGraph(x,y):
+    plt.scatter(x,y)
+    plt.plot(x,y)
+    plt.xscale("log")
+    plt.autoscale()
+    plt.grid()
+    plt.show()
 
-plt.scatter(listSize,time)
-plt.plot(listSize,time)
-plt.xscale("log")
-plt.autoscale()
-plt.grid()
-plt.show()
+
+plotGraph(x, y)

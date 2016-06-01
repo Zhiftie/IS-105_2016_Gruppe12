@@ -38,7 +38,7 @@ def testF(needleMethod):
     sFast = []
     while len(haystack) <= 10000000: #max size of haystack
         timer = timeit.Timer(Search_f)
-        result = timer.repeat(repeat = 1, number = 10)        
+        result = timer.repeat(repeat = 1, number = 1)        
         sFast.append((len(haystack), min(result)))
         for i in xrange(len(haystack),(len(haystack)*2)): 
             haystack.append(i)
@@ -50,11 +50,10 @@ def createFile(filename):
         writer = csv.writer(f, delimiter = ",")  
         writer.writerows(zip(x,y))
 
-
 haystack = []
 makeHaystack(100000) # initial size of haystack
 needle = None
 
-fList = testF(setNeedleEnd)# where to put the needle. 
+fList = testF(setNeedleStart)# where to put the needle. 
 x , y = splitL(fList)
 createFile('filename.csv') # descriptive name of the created file
