@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import timeit
+import csv
 
 def makeHaystack(size): #max size: 536 870 912
     for i in xrange(0,size):
