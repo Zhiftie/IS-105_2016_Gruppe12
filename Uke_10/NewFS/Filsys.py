@@ -1,4 +1,5 @@
-from Dir import Dirs as d
+# -*- coding: utf-8 -*-
+from Dir import Dirs as d #Navnet på Dir.py bør endres 
 class Filsys():
     
     def __init__(self, sysname):
@@ -24,7 +25,7 @@ class Filsys():
         
     """
 ^^^^^^^ metoden^^^^^^ burde legges inn i remove metoden, slik at
-bruker slipper � tenke p� slikt. 
+bruker slipper å tenke på slikt. 
     """
         
 fs = Filsys("Sys1")
