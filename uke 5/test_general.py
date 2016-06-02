@@ -24,6 +24,5 @@ class PokerTest(unittest.TestCase):
         assert poker([s1, tp]) == [s1]
 """
 Her prøvde vi å lage en generell test for pokerprogrammet, men vi klarer ikke å få den til å fungere. 
-Vi klarer ikke få den til å vise feilmeldinger, til tross for at i testen finnes det feil. 
 
 """

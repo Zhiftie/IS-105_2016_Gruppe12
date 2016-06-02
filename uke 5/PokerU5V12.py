@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+# Kilde: https://github.com/mcleung/ProjectEuler/blob/master/P054Poker.py
 import random #random generator
 import math 
 import itertools
@@ -171,6 +171,5 @@ Dette gjøres for å forhindre ugyldige antall verdier.
 som kan få det til å kjøre.
 2. Vi er usikre på hvordan syntaxen til en unittest skal se ut med våres pokerprogram, og har derfor valgt å bruke assert tester i
 programmet. Assert testene er direkte kopiert fra kilden(se .pdf i github), da vi ikke har mer tid til å lage egne.
-3. Vi er ikke 100% sikre på hva alt av koden som er brukt betyr, men har kommentert det meste. 
 
 """
