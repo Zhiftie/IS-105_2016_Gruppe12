@@ -27,7 +27,7 @@ def plotGraph(filename):# specify name of file to get plot points
     plt.grid()
     plt.show()
 
-def plotMulti(file1,file2,file3,file4,file5,file6, title):
+def plotMulti(file1,file2,file3,file4,file5,file6, title): 
     files = [file1,file2,file3,file4,file5,file6]
     graphs = []
     for item in files:
@@ -48,4 +48,25 @@ def plotMulti(file1,file2,file3,file4,file5,file6, title):
 plotMulti("AskeFast.csv", "EspenFast.csv", "LaddenFast.csv", "PerFast.csv", "TomSlow.csv",
           "SindreSlow.csv", "Fast Method Needle Start")
 """
+def getTitle(string):
+    title = string[:-4]
+    title = re.findall('[A-Z][^A-Z]*', title)
+    title = title[2]
+    return title
 
+def plotMulti2(*arg): #
+    files = arg
+    for filename in files:
+        name = re.findall('[A-Z][^A-Z]*', filename)
+        x ,y = getCoordinates(filename)
+        line = plt.plot(x, y, label = name[0] + " " + name[1]) , plt.scatter(x, y)
+    plt.xlabel("Size of List")
+    plt.ylabel("Time")
+    plt.title("Needle Position" +  ": " + getTitle(files[0]))
+    plt.grid()
+    plt.autoscale()
+    plt.xscale("log")
+    plt.legend()
+    plt.show()
+
+plotMulti2("SindreFastStart.csv", "SindreFastStart2.csv")
