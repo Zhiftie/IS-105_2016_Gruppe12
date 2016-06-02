@@ -38,7 +38,7 @@ def testF(needleMethod):
     sFast = []
     while len(haystack) <= 10000000: #max size of haystack
         timer = timeit.Timer(Search_f)
-        result = timer.repeat(repeat = 1, number = 1)        
+        result = timer.repeat(repeat = 10, number = 1)        
         sFast.append((len(haystack), min(result)))
         for i in xrange(len(haystack),(len(haystack)*2)): 
             haystack.append(i)
