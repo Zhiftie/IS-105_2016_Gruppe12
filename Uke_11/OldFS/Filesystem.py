@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import shelve, time, sys
 from File import *
+"""
+Source: http://technoslab.blogspot.no/2014/08/write-python-program-for-creating.html
+"""
 
 class FileSystem(object):
     
