@@ -1,3 +1,4 @@
+import re
 import csv
 import matplotlib.pyplot as plt
 
@@ -26,4 +27,25 @@ def plotGraph(filename):# specify name of file to get plot points
     plt.grid()
     plt.show()
 
-plotGraph("test1.csv")
+def plotMulti(file1,file2,file3,file4,file5,file6, title):
+    files = [file1,file2,file3,file4,file5,file6]
+    graphs = []
+    for item in files:
+        graphs.append(item)
+    for filename in graphs:
+        name = re.findall('[A-Z][^A-Z]*', filename)
+        x ,y = getCoordinates(filename)
+        line = plt.plot(x, y, label = name[0] + " " + name[1]) , plt.scatter(x, y)
+    plt.xlabel("Size of List")
+    plt.ylabel("Time")
+    plt.title(title)
+    plt.grid()
+    plt.autoscale()
+    plt.xscale("log")
+    plt.legend()
+    plt.show()
+"""
+plotMulti("AskeFast.csv", "EspenFast.csv", "LaddenFast.csv", "PerFast.csv", "TomSlow.csv",
+          "SindreSlow.csv", "Fast Method Needle Start")
+"""
+
