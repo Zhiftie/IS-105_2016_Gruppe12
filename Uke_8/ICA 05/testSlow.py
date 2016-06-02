@@ -40,7 +40,7 @@ def testS(needleMethod):
     sSlow = []
     while len(haystack) <= 10000000: #max size of haystack
         timer = timeit.Timer(Search_s)
-        result = timer.repeat(repeat = 1, number = 100)        
+        result = timer.repeat(repeat = 10, number = 1)        
         sSlow.append((len(haystack), min(result)))
         for i in xrange(len(haystack),(len(haystack)*2)):
             haystack.append(i) 

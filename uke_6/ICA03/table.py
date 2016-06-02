@@ -1,6 +1,4 @@
 #  -*- coding: utf-8-*-
-from code_flip import rev_table as rt
-
 def code():
     """
     LZW
@@ -135,44 +133,17 @@ def code():
     table[126] = '~'
     table[127] = 'DEL'
     return table
-table = code()
 
-def encode(message): 
-    table = code()
-    string = ""
-    code_for_string = []
-    for byte in message:
-        symbol = byte
-        if (string + symbol) in table.values():
-            string = string + symbol
-#leser tekst som skal komprimeres i bytes. 
-#Sjekker også om symbolet og stringen som leses allerede finnes i dictionary. 
-        else:
-            for k,v in table.iteritems(): 
-                if v == string:
-                    code_for_string.append(k) #Hvis det finnes en tilsvarende value i dictionary som er lik symbol vil det lages en ny liste.
-            table[max(table.keys())+1] = string + symbol 
-            string = symbol
-    for k,v in table.iteritems():
-        if v == string:
-            code_for_string.append(k)
-    return code_for_string
-
-
-def test():
-    test_message = "This is a test message 123123456456...,,,"
-    return encode(test_message)
-
-def decode(encodedMessage):
+def rev_table(decodeTable):
+    """
+    Bytter om keys og values i table og legger resultatet inn i en ny dictionary
+    """
     
+    rev_table = {v : k for k, v in decodeTable.items()}
+    return rev_table
+
+table = rev_table(code())
 
 
-decodeTable = rt(table)
-encodedMessage = test()
 
-print encodedMessage
 
-#if __name__ == '__main__':
-    #unittest.main()
-
-        
