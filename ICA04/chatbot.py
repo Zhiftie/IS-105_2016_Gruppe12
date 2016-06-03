@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 import pyttsx
+
 engine = pyttsx.init()
 engine.setProperty('rate', 90)
 voices = engine.getProperty('voices')
@@ -10,8 +12,8 @@ def greet():
     engine.say("hi")
     engine.runAndWait()
     chatInput = raw_input("Enter your message: ")
-    chatInput = chatInput.lower()
-    if any(chatInput in s for s in welcomeOpt):
+    chatInput = chatInput.lower() #Setter strengen fra brukeren til kun små boksotaver
+    if any(chatInput in s for s in welcomeOpt): #Sjekker om bruker input er en lovlig kommando iht. welcomeOpt[]
         hay()
     else:
         engine.say("Inproper response, prepare to be exterminated")
