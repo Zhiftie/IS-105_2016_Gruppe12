@@ -3,13 +3,7 @@ import io
 import string
 
 
-'''
-Module med eksempler i uke 04 (informasjonsteori)
-Løsninger for klasseoppgavene 25.01.2016 implementeres her
-Løsningsforslag innleveres i gruppe-repositorien.
-GRUPPENR: ...
-STUDENTER: ...
-'''
+
 n = 8
 
 def encode(text):
