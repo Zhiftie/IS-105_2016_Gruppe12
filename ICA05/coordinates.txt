@@ -1,6 +1,0 @@
-Test Linje 1.
-Test Linje 2.
-Test Linje 3.
-1
-2
-3

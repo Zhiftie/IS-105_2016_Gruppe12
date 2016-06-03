@@ -58,5 +58,5 @@ needle = None
 
 sList = testS(setNeedleMiddle) #where to put the needle
 x , y = splitL(sList)
-createFile("filename.csv")
+createFile("NameMethodNeedleposition.csv")
 
