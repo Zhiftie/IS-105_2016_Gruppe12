@@ -27,46 +27,27 @@ def plotGraph(filename):# specify name of file to get plot points
     plt.grid()
     plt.show()
 
-def plotMulti(file1,file2,file3,file4,file5,file6, title): 
-    files = [file1,file2,file3,file4,file5,file6]
-    graphs = []
-    for item in files:
-        graphs.append(item)
-    for filename in graphs:
-        name = re.findall('[A-Z][^A-Z]*', filename)
-        x ,y = getCoordinates(filename)
-        line = plt.plot(x, y, label = name[0] + " " + name[1]) , plt.scatter(x, y)
-    plt.xlabel("Size of List")
-    plt.ylabel("Time")
-    plt.title(title)
-    plt.grid()
-    plt.autoscale()
-    plt.xscale("log")
-    plt.legend()
-    plt.show()
-"""
-plotMulti("AskeFast.csv", "EspenFast.csv", "LaddenFast.csv", "PerFast.csv", "TomSlow.csv",
-          "SindreSlow.csv", "Fast Method Needle Start")
-"""
-def getTitle(string):
+def getTitle(string): 
     title = string[:-4]
     title = re.findall('[A-Z][^A-Z]*', title)
     title = title[2]
     return title
 
-def plotMulti2(*arg): #
+def plotMultiple(*arg): #plot csv files passed in parameter
     files = arg
     for filename in files:
         name = re.findall('[A-Z][^A-Z]*', filename)
+        np = name[1] + " "+ name[2][:-4]
         x ,y = getCoordinates(filename)
-        line = plt.plot(x, y, label = name[0] + " " + name[1]) , plt.scatter(x, y)
+        line = plt.plot(x, y, label = name[0] + " " + (np)) , plt.scatter(x, y)
     plt.xlabel("Size of List")
     plt.ylabel("Time")
     plt.title("Needle Position" +  ": " + getTitle(files[0]))
     plt.grid()
     plt.autoscale()
     plt.xscale("log")
-    plt.legend()
+    plt.legend(bbox_to_anchor=(1.0, 1), loc=2, borderaxespad=0.)
     plt.show()
 
-plotMulti2("SindreFastStart.csv", "SindreFastStart2.csv")
+
+plotMutliple("NameMethodNeedleposition.csv") #<--name of files in parameter as string
