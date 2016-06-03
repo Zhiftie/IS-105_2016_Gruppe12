@@ -1,11 +1,13 @@
 # IS-105_2016_Gruppe12
 Gruppemedlemmer: 
-Martin Nenseth
-Sindre Haugeland
-Thomas Berntsen
-Robert Berntsen
-Lene Odde
-Guro Kalland
+<ol>
+  <li>Martin Nenseth</li>
+  <li>Sindre Haugeland</li>
+  <li>Thomas Berntsen</li>
+  <li>Robert Berntsen</li>
+  <li>Lene Odde</li>
+ <li> Guro Kalland</li>
+</ol>
 
 
-Arbeidet med ICA er fordelt i mapper etter ukenavn. 
+
