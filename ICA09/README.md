@@ -16,3 +16,10 @@ maninboat : mannen går inn i båten
 exitboat : mannen går ut av båten
 
 show : viser tilstanden 
+
+
+<font size="3"> 
+GUI: 
+Grafisk brukergrensesnitt er ikke implementert, fordi vi har støtt på problemer med å sende hele GUI koden, altså filene fra ICA08, til
+klient. Vi prøvde å løse dette ved å ha dise filene tilgjengelig for klinten, og sende et kall som utløser GUIen til klienten, men har ikke lykkes. 
+</font>
