@@ -1,4 +1,6 @@
-﻿Fungerende versjon finnes i rivercrossingV2 - final
+﻿Kjør rcServer fra kommandovindu, og deretter rcClient. 
+
+
 Kommandoer som kan gis fra klient:
 Viktig at de skrives med små bokstaver uten whitespace forran eller bak
 Objekter som kan flyttes: f - reven, c - høna, g - kornet
